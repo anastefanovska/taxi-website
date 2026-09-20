@@ -391,6 +391,8 @@
     if (!viewport || slides.length < 2) return;
 
     var index = 0;
+    var settling = false;
+    var settleTimer = null;
 
     if (totalOut) totalOut.textContent = String(slides.length);
 
@@ -418,6 +420,12 @@
     function go(next, fromUser) {
       var total = slides.length;
       index = ((next % total) + total) % total;
+
+      /* Додека трае програмското скролање, избраниот слајд е меродавен —
+         инаку бројачот трепка додека лизга. */
+      settling = true;
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(function () { settling = false; }, 700);
 
       viewport.scrollTo({
         left: offsetOf(index),
@@ -447,6 +455,15 @@
     /* Свајп / скрол — најблискиот слајд станува активен. */
     viewport.addEventListener('scroll', throttle(function () {
       var position = viewport.scrollLeft;
+
+      if (settling) {
+        if (Math.abs(offsetOf(index) - position) < 2) {
+          settling = false;
+          clearTimeout(settleTimer);
+        }
+        return;
+      }
+
       var closest = 0;
       var smallest = Infinity;
 

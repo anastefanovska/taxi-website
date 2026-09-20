@@ -621,7 +621,7 @@ h1, h2, h3 {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: grid;
-  align-content: start;
+  grid-template-rows: auto 1fr;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--paper);
@@ -676,7 +676,7 @@ h1, h2, h3 {
 .crew__car {
   margin: 0;
   display: grid;
-  align-content: start;
+  grid-template-rows: auto 1fr;
   border-top: 1px solid var(--line);
   background: var(--paper-alt);
 }
@@ -1411,7 +1411,7 @@ h1, h2, h3 {
   .trust__grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 
   .crew__viewport { gap: 1.5rem; }
-  .crew__slide { grid-template-columns: 1fr 1fr; align-content: stretch; }
+  .crew__slide { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
   .crew__person {
     grid-template-columns: 160px 1fr;
     padding: 2.25rem 2rem;

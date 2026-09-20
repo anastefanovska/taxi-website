@@ -25,7 +25,7 @@
       <stop offset="0%" stop-color="#cdd3da"/>
       <stop offset="100%" stop-color="#6e767f"/>
     </linearGradient>
-    <clipPath id="c1frame"><rect x="0" y="0" width="800" height="500" rx="20"/></clipPath>
+    <clipPath id="c1frame"><rect x="0" y="0" width="800" height="500"/></clipPath>
   </defs>
 
   <g clip-path="url(#c1frame)">
