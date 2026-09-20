@@ -1,11 +1,6 @@
 (function () {
   'use strict';
 
-  var CONFIG = {
-    phoneIntl: '+38970123456',
-    phonePretty: '070 123 456'
-  };
-
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktopQuery = window.matchMedia('(min-width: 900px)');
 
@@ -15,6 +10,18 @@
 
   function $$(selector, scope) {
     return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
+  }
+
+  function t(key, fallback) {
+    var value = window.I18N ? window.I18N.t(key) : null;
+    return value === null || value === undefined ? fallback : value;
+  }
+
+  function format(key, values, fallback) {
+    var value = window.I18N && window.I18N.format
+      ? window.I18N.format(key, values)
+      : null;
+    return value === null || value === undefined ? fallback : value;
   }
 
   function throttle(fn, wait) {
@@ -42,8 +49,102 @@
 
   function headerHeight() {
     var header = $('#header');
-    return header ? header.offsetHeight : 66;
+    return header ? header.offsetHeight : 60;
   }
+
+  var CFG = window.SITE_CONFIG || {};
+  var CREW = CFG.crew || [];
+
+  function telHref(number) {
+    return 'tel:' + String(number).replace(/[\s()-]/g, '');
+  }
+
+  (function applyConfig() {
+    if (!window.SITE_CONFIG) return;
+
+    $$('[data-call]').forEach(function (el) {
+      var which = el.getAttribute('data-call');
+      var number = CFG.phoneNumber;
+
+      if (which !== 'main') {
+        var member = CREW[parseInt(which, 10) - 1];
+        if (member && member.phoneNumber) number = member.phoneNumber;
+      }
+
+      if (number) el.setAttribute('href', telHref(number));
+    });
+
+    if (CFG.phoneDisplay) {
+      $$('[data-phone]').forEach(function (el) { el.textContent = CFG.phoneDisplay; });
+    }
+
+    if (CFG.phoneIntlDisplay) {
+      $$('[data-phone-intl]').forEach(function (el) { el.textContent = CFG.phoneIntlDisplay; });
+    }
+
+    if (CFG.email) {
+      $$('[data-email]').forEach(function (el) {
+        el.textContent = CFG.email;
+        el.setAttribute('href', 'mailto:' + CFG.email);
+      });
+    }
+
+    var links = {
+      viber: CFG.viberUrl,
+      whatsapp: CFG.whatsappUrl,
+      sms: CFG.smsUrl,
+      maps: CFG.googleMapsUrl
+    };
+
+    $$('[data-link]').forEach(function (el) {
+      var url = links[el.getAttribute('data-link')];
+      if (url) el.setAttribute('href', url);
+    });
+
+    var prices = CFG.prices || {};
+    $$('[data-price]').forEach(function (el) {
+      var value = prices[el.getAttribute('data-price')];
+      if (value) el.textContent = value;
+    });
+
+    $$('[data-crew-photo]').forEach(function (el) {
+      var member = CREW[parseInt(el.getAttribute('data-crew-photo'), 10) - 1];
+      if (member && member.driverPhoto) el.setAttribute('src', member.driverPhoto);
+    });
+
+    $$('[data-crew-car]').forEach(function (el) {
+      var member = CREW[parseInt(el.getAttribute('data-crew-car'), 10) - 1];
+      if (member && member.vehiclePhoto) el.setAttribute('src', member.vehiclePhoto);
+    });
+  })();
+
+  /* Реченици што содржат телефонски линк — текстот доаѓа од преводот,
+     а бројот од config.js. */
+  (function phraseWithPhone() {
+    var nodes = $$('[data-step-phone]');
+    if (!nodes.length) return;
+
+    function render() {
+      nodes.forEach(function (node) {
+        var link = $('a', node);
+        if (!link) return;
+
+        if (CFG.phoneDisplay) link.textContent = CFG.phoneDisplay;
+
+        var template = t(node.getAttribute('data-step-phone'), null);
+        if (template === null || template.indexOf('{phone}') === -1) return;
+
+        var parts = template.split('{phone}');
+        node.textContent = '';
+        node.appendChild(document.createTextNode(parts[0]));
+        node.appendChild(link);
+        node.appendChild(document.createTextNode(parts.slice(1).join('{phone}')));
+      });
+    }
+
+    render();
+    document.addEventListener('langchange', render);
+  })();
 
   var Nav = (function () {
     var nav = $('#nav');
@@ -59,13 +160,19 @@
       });
     }
 
+    function syncLabel() {
+      burger.setAttribute('aria-label', isOpen
+        ? t('a11y.closeMenu', 'Затвори мени')
+        : t('a11y.openMenu', 'Отвори мени'));
+    }
+
     function open() {
       isOpen = true;
       nav.classList.add('is-open');
       burger.setAttribute('aria-expanded', 'true');
-      burger.setAttribute('aria-label', 'Затвори мени');
       document.body.classList.add('is-locked');
       if (scrim) scrim.hidden = false;
+      syncLabel();
     }
 
     function close(returnFocus) {
@@ -73,9 +180,9 @@
       isOpen = false;
       nav.classList.remove('is-open');
       burger.setAttribute('aria-expanded', 'false');
-      burger.setAttribute('aria-label', 'Отвори мени');
       document.body.classList.remove('is-locked');
       if (scrim) scrim.hidden = true;
+      syncLabel();
       if (returnFocus) burger.focus();
     }
 
@@ -115,6 +222,8 @@
         first.focus();
       }
     });
+
+    document.addEventListener('langchange', syncLabel);
 
     function handleBreakpoint(event) {
       if (event.matches) close(false);
@@ -203,7 +312,7 @@
       event.preventDefault();
       Nav.close(false);
 
-      var top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 12;
+      var top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 8;
 
       window.scrollTo({
         top: Math.max(top, 0),
@@ -229,7 +338,7 @@
     var settled = 0;
 
     function align() {
-      var top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 12;
+      var top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 8;
       window.scrollTo({ top: Math.max(top, 0), behavior: 'auto' });
       settled = Math.round(window.scrollY);
     }
@@ -254,16 +363,115 @@
       entries.forEach(function (entry, index) {
         if (!entry.isIntersecting) return;
 
-        var delay = Math.min(index, 4) * 70;
+        var delay = Math.min(index, 3) * 60;
         setTimeout(function () {
           entry.target.classList.add('is-visible');
         }, delay);
 
         obs.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.1 });
 
     items.forEach(function (el) { observer.observe(el); });
+  })();
+
+  /* Слајдер: возач + неговото возило */
+  (function crew() {
+    var root = $('#crew');
+    if (!root) return;
+
+    var viewport = $('#crewViewport', root);
+    var slides = $$('[data-crew-slide]', root);
+    var picks = $$('[data-crew-go]', root);
+    var prevBtn = $('[data-crew-prev]', root);
+    var nextBtn = $('[data-crew-next]', root);
+    var indexOut = $('[data-crew-index]', root);
+    var totalOut = $('[data-crew-total]', root);
+
+    if (!viewport || slides.length < 2) return;
+
+    var index = 0;
+
+    if (totalOut) totalOut.textContent = String(slides.length);
+
+    function labelSlides() {
+      slides.forEach(function (slide, i) {
+        var label = format('crew.slideLabel', { n: i + 1, total: slides.length }, null);
+        if (label) slide.setAttribute('aria-label', label);
+      });
+    }
+
+    function sync() {
+      picks.forEach(function (btn, i) {
+        var active = i === index;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+
+      if (indexOut) indexOut.textContent = String(index + 1);
+    }
+
+    function offsetOf(i) {
+      return slides[i].offsetLeft - slides[0].offsetLeft;
+    }
+
+    function go(next, fromUser) {
+      var total = slides.length;
+      index = ((next % total) + total) % total;
+
+      viewport.scrollTo({
+        left: offsetOf(index),
+        behavior: prefersReducedMotion || !fromUser ? 'auto' : 'smooth'
+      });
+
+      sync();
+    }
+
+    picks.forEach(function (btn, i) {
+      btn.addEventListener('click', function () { go(i, true); });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(index - 1, true); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(index + 1, true); });
+
+    root.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        go(index - 1, true);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        go(index + 1, true);
+      }
+    });
+
+    /* Свајп / скрол — најблискиот слајд станува активен. */
+    viewport.addEventListener('scroll', throttle(function () {
+      var position = viewport.scrollLeft;
+      var closest = 0;
+      var smallest = Infinity;
+
+      slides.forEach(function (slide, i) {
+        var distance = Math.abs(offsetOf(i) - position);
+        if (distance < smallest) {
+          smallest = distance;
+          closest = i;
+        }
+      });
+
+      if (closest !== index) {
+        index = closest;
+        sync();
+      }
+    }, 120), { passive: true });
+
+    window.addEventListener('resize', throttle(function () {
+      viewport.scrollTo({ left: offsetOf(index), behavior: 'auto' });
+    }, 200));
+
+    document.addEventListener('langchange', labelSlides);
+
+    labelSlides();
+    sync();
   })();
 
   (function callBar() {
@@ -308,11 +516,11 @@
     var preview = $('#msgPreview');
     var copyBtn = $('#copyBtn');
 
-    var LABELS = {
-      name: 'Име',
-      phone: 'Телефон',
-      from: 'Од локација',
-      to: 'До локација'
+    var FIELD_KEYS = {
+      name: 'form.name',
+      phone: 'form.phone',
+      from: 'form.from',
+      to: 'form.to'
     };
 
     function setError(field, message) {
@@ -331,7 +539,7 @@
     function validate() {
       var firstInvalid = null;
 
-      Object.keys(LABELS).forEach(function (id) {
+      Object.keys(FIELD_KEYS).forEach(function (id) {
         var field = form.elements[id];
         if (!field) return;
 
@@ -339,11 +547,11 @@
         var message = '';
 
         if (!value) {
-          message = 'Полето „' + LABELS[id] + '“ е задолжително.';
+          message = format('form.errRequired', { field: t(FIELD_KEYS[id], id) }, 'Задолжително поле.');
         } else if (id === 'phone' && !isPhoneValid(value)) {
-          message = 'Внесете валиден телефонски број.';
+          message = t('form.errPhone', 'Внесете валиден телефонски број.');
         } else if (id === 'name' && value.length < 2) {
-          message = 'Внесете го вашето име.';
+          message = t('form.errName', 'Внесете го вашето име.');
         }
 
         setError(field, message);
@@ -355,13 +563,14 @@
 
     function setSendLinks(message) {
       var encoded = message ? encodeURIComponent(message) : '';
-      var digits = CONFIG.phoneIntl.replace(/\D/g, '');
+      var intl = CFG.phoneNumber || '+38970123456';
+      var digits = intl.replace(/\D/g, '');
       var viber = $('#sendViber');
       var whatsapp = $('#sendWhatsapp');
       var sms = $('#sendSms');
 
       if (viber) {
-        viber.href = 'viber://chat?number=' + encodeURIComponent(CONFIG.phoneIntl) +
+        viber.href = 'viber://chat?number=' + encodeURIComponent(intl) +
           (encoded ? '&text=' + encoded : '');
       }
       if (whatsapp) {
@@ -369,7 +578,7 @@
       }
       if (sms) {
         var separator = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? '&' : '?';
-        sms.href = 'sms:' + CONFIG.phoneIntl + (encoded ? separator + 'body=' + encoded : '');
+        sms.href = 'sms:' + intl + (encoded ? separator + 'body=' + encoded : '');
       }
     }
 
@@ -379,18 +588,23 @@
       };
 
       var lines = [
-        'Барање за такси превоз',
+        t('form.msgHead', 'Барање за такси превоз'),
         '',
-        'Име: ' + get('name'),
-        'Телефон: ' + get('phone'),
-        'Од: ' + get('from'),
-        'До: ' + get('to')
+        t('form.msgName', 'Име') + ': ' + get('name'),
+        t('form.msgPhone', 'Телефон') + ': ' + get('phone'),
+        t('form.msgFrom', 'Од') + ': ' + get('from'),
+        t('form.msgTo', 'До') + ': ' + get('to')
       ];
 
-      if (get('when')) lines.push('Кога: ' + get('when'));
-      if (get('msg')) lines.push('Забелешка: ' + get('msg'));
+      if (get('when')) lines.push(t('form.msgWhen', 'Кога') + ': ' + get('when'));
+      if (get('msg')) lines.push(t('form.msgNote', 'Забелешка') + ': ' + get('msg'));
 
       return lines.join('\n');
+    }
+
+    function publish(message) {
+      setSendLinks(message);
+      if (preview) preview.textContent = message;
     }
 
     form.addEventListener('submit', function (event) {
@@ -402,10 +616,7 @@
         return;
       }
 
-      var message = buildMessage();
-      setSendLinks(message);
-
-      if (preview) preview.textContent = message;
+      publish(buildMessage());
 
       if (result) {
         result.hidden = false;
@@ -423,6 +634,12 @@
       if (field.closest('.field.has-error')) setError(field, '');
     });
 
+    /* Пораката и грешките се преведуваат заедно со страницата. */
+    document.addEventListener('langchange', function () {
+      if (result && !result.hidden) publish(buildMessage());
+      if ($('.field.has-error', form)) validate();
+    });
+
     if (copyBtn) {
       copyBtn.addEventListener('click', function () {
         var text = preview ? preview.textContent : '';
@@ -430,15 +647,9 @@
 
         var done = function () {
           var original = copyBtn.textContent;
-          copyBtn.textContent = 'Копирано ✓';
+          copyBtn.textContent = t('form.copied', 'Копирано ✓');
           setTimeout(function () { copyBtn.textContent = original; }, 1800);
         };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
-        } else {
-          fallbackCopy();
-        }
 
         function fallbackCopy() {
           var area = document.createElement('textarea');
@@ -450,6 +661,12 @@
           area.select();
           try { document.execCommand('copy'); done(); } catch (e) {}
           document.body.removeChild(area);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
         }
       });
     }

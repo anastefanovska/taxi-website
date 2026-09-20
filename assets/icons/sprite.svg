@@ -125,4 +125,15 @@
     <circle cx="12" cy="12" r="8.6"/>
     <path d="M12 11.2v5M12 7.9v.01"/>
   </symbol>
+
+  <symbol id="users" viewBox="0 0 24 24">
+    <circle cx="9.2" cy="8.4" r="3.4"/>
+    <path d="M3.4 19.4a5.8 5.8 0 0 1 11.6 0"/>
+    <path d="M16.4 5.4a3.4 3.4 0 0 1 0 6.6M17.6 14.2a5.8 5.8 0 0 1 3 5.2"/>
+  </symbol>
+
+  <symbol id="map" viewBox="0 0 24 24">
+    <path d="M9 4.2L3.6 6.4v13.4L9 17.6l6 2.2 5.4-2.2V4.2L15 6.4z"/>
+    <path d="M9 4.2v13.4M15 6.4v13.4"/>
+  </symbol>
 </svg>
