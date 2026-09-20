@@ -1,0 +1,45 @@
+# ============================================================
+#  Вардар Такси — .gitignore
+#  Статички сајт: нема build фолдери ниту зависности.
+# ============================================================
+
+# --- Оперативен систем ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# --- Едитори и IDE ---
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+.history/
+
+# --- Логови и привремени датотеки ---
+*.log
+npm-debug.log*
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# --- Локални серверски алатки (ако се користат за преглед) ---
+node_modules/
+.cache/
+.parcel-cache/
+.sass-cache/
+
+# --- Локални и тајни поставки ---
+.env
+.env.local
+*.local
