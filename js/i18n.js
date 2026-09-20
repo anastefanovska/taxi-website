@@ -60,7 +60,7 @@
 
       'crew.eyebrow': 'За нас',
       'crew.title': 'Запознајте ги возачите',
-      'crew.lead': 'Кај нас знаете однапред кој доаѓа по вас и со кое возило. Двајца возачи, две возила — без непознати.',
+      'crew.lead': 'Знаете кој доаѓа. Знаете со кое возило патувате.',
       'crew.carousel': 'Возачи и нивните возила',
       'crew.role': 'Професионален возач',
       'crew.vehicleLabel': 'Доаѓа со ова возило',
@@ -169,7 +169,7 @@
 
       'contact.eyebrow': 'Контакт',
       'contact.title': 'Едно јавување е доволно',
-      'contact.lead': 'Најбрзо е по телефон. Ако сте во странство или ви е попогодно да пишувате — достапни сме и на Viber и WhatsApp.',
+      'contact.lead': 'Најбрзо е по телефон. Ако сте во странство или Ви е попогодно да пишувате — достапни сме и на Viber и WhatsApp.',
       'contact.hoursTitle': 'Работно време',
       'contact.hoursText': '24 часа, 7 дена во неделата',
       'contact.hoursShort': 'Достапни 24/7',
@@ -214,8 +214,7 @@
       'footer.navTitle': 'Навигација',
       'footer.contactTitle': 'Контакт',
       'footer.place': 'Скопје, Северна Македонија',
-      'footer.rights': 'Сите права задржани.',
-      'footer.disclaimer': 'Демонстративен сајт — податоците и цените се илустративни.'
+      'footer.rights': 'Сите права задржани.'
     },
 
     en: {
@@ -273,7 +272,7 @@
 
       'crew.eyebrow': 'About us',
       'crew.title': 'Meet the drivers',
-      'crew.lead': 'You know up front who is coming for you and in which car. Two drivers, two cars — no strangers.',
+      'crew.lead': 'You know who is coming. You know which car you are travelling in.',
       'crew.carousel': 'Drivers and their cars',
       'crew.role': 'Professional driver',
       'crew.vehicleLabel': 'Arrives in this car',
@@ -427,8 +426,7 @@
       'footer.navTitle': 'Navigation',
       'footer.contactTitle': 'Contact',
       'footer.place': 'Skopje, North Macedonia',
-      'footer.rights': 'All rights reserved.',
-      'footer.disclaimer': 'Demo site — the details and prices are illustrative.'
+      'footer.rights': 'All rights reserved.'
     }
   };
 
@@ -443,8 +441,6 @@
     } catch (e) {
       stored = null;
     }
-    /* Македонскиот е стандарден; англискиот се бира преку прекинувачот
-       и потоа се памети. */
     return stored && DICT[stored] ? stored : DEFAULT_LANG;
   }
 

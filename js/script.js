@@ -118,8 +118,6 @@
     });
   })();
 
-  /* Реченици што содржат телефонски линк — текстот доаѓа од преводот,
-     а бројот од config.js. */
   (function phraseWithPhone() {
     var nodes = $$('[data-step-phone]');
     if (!nodes.length) return;
@@ -375,7 +373,6 @@
     items.forEach(function (el) { observer.observe(el); });
   })();
 
-  /* Слајдер: возач + неговото возило */
   (function crew() {
     var root = $('#crew');
     if (!root) return;
@@ -421,8 +418,6 @@
       var total = slides.length;
       index = ((next % total) + total) % total;
 
-      /* Додека трае програмското скролање, избраниот слајд е меродавен —
-         инаку бројачот трепка додека лизга. */
       settling = true;
       clearTimeout(settleTimer);
       settleTimer = setTimeout(function () { settling = false; }, 700);
@@ -452,7 +447,6 @@
       }
     });
 
-    /* Свајп / скрол — најблискиот слајд станува активен. */
     viewport.addEventListener('scroll', throttle(function () {
       var position = viewport.scrollLeft;
 
@@ -651,7 +645,6 @@
       if (field.closest('.field.has-error')) setError(field, '');
     });
 
-    /* Пораката и грешките се преведуваат заедно со страницата. */
     document.addEventListener('langchange', function () {
       if (result && !result.hidden) publish(buildMessage());
       if ($('.field.has-error', form)) validate();
