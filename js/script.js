@@ -5,19 +5,22 @@
   var SWITCH_DELAY = 180;
   var LIGHTBOX_DELAY = 250;
   var DRIVER_DELAY = 200;
+  var CAR_SVG = '<svg class="route__car" viewBox="0 0 24 13" aria-hidden="true"><rect x="10.5" y="0.5" width="4" height="2" rx="0.6"/><path class="route__car-body" d="M2 9.6V8.2c0-.8.6-1.5 1.4-1.6L7 6l2.7-2.7c.4-.4.9-.6 1.4-.6h4.3c.6 0 1.1.3 1.5.7L19.5 6l2.1.4c.8.2 1.4.9 1.4 1.7v1.5c0 .5-.4.9-.9.9H2.9c-.5 0-.9-.4-.9-.9z"/><path class="route__car-window" d="M10.6 4.2h2.2V6H8.9zM14 4.2h1.5c.3 0 .5.1.7.3L17.6 6H14z"/><circle cx="7" cy="10.5" r="2"/><circle cx="18" cy="10.5" r="2"/></svg>';
+  var FARE_ORIGINS = ['skopje', 'airport'];
 
   var lang = readSavedLanguage();
-  var fareFrom = PRICES.local[0][0];
-  var fareTo = PRICES.local[0][1];
+  var fareFrom = 'skopje';
+  var fareTo = 'airport';
   var activeDriver = 0;
 
   var header = document.getElementById('header');
   var nav = document.getElementById('nav');
   var menuBtn = document.getElementById('menuBtn');
-  var priceGroupsEl = document.getElementById('priceGroups');
   var fromSelect = document.getElementById('fareFrom');
   var toSelect = document.getElementById('fareTo');
+  var fareSwap = document.getElementById('fareSwap');
   var farePriceEl = document.getElementById('farePrice');
+  var fareNoteEl = document.getElementById('fareNote');
   var driverTabsEl = document.getElementById('driverTabs');
   var driverPanelEl = document.getElementById('driverPanel');
 
@@ -31,6 +34,8 @@
   var lightboxIndex = 0;
   var lightboxOpener = null;
   var touchStartX = null;
+  var abroadList = document.getElementById('abroad');
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function readSavedLanguage() {
     try {
@@ -64,20 +69,51 @@
     });
   }
 
-  function formatPrice(amount) {
-    if (typeof amount !== 'number') return amount;
+  function formatMkd(amount) {
     var separator = lang === 'en' ? ',' : '.';
     return String(amount).replace(/\B(?=(\d{3})+(?!\d))/g, separator) + ' ' + t('currency');
   }
 
-  function findPrice(from, to) {
-    var reverse = null;
-    for (var i = 0; i < PRICES.local.length; i++) {
-      var route = PRICES.local[i];
-      if (route[0] === from && route[1] === to) return route[2];
-      if (route[0] === to && route[1] === from) reverse = route[2];
+  function priceType(route) {
+    if (route.meter) return 'meter';
+    if (route.mkd || route.eur) return route.startsAt ? 'from' : 'fixed';
+    return 'quote';
+  }
+
+  function priceText(route) {
+    var type = priceType(route);
+    if (type === 'meter') return t('price.meter');
+    if (type === 'quote') return t('price.quote');
+    var amount = route.mkd ? formatMkd(route.mkd) : '€' + route.eur;
+    return type === 'from' ? t('price.from') + ' ' + amount : amount;
+  }
+
+  function priceHtml(route, className) {
+    var type = priceType(route);
+    if (type === 'quote') return '<a class="price-ask" data-call href="#kontakt">' + esc(t('price.quote')) + '</a>';
+    return '<span class="' + className + (type === 'meter' ? ' is-meter' : '') + '">' + esc(priceText(route)) + '</span>';
+  }
+
+  function findRoute(from, to) {
+    for (var i = 0; i < PRICES.routes.length; i++) {
+      var route = PRICES.routes[i];
+      if (route.from === from && route.to === to) return route;
     }
-    return reverse;
+    return null;
+  }
+
+  function isAbroad(route) {
+    return Boolean(route.km);
+  }
+
+  function routesFrom(from, abroad) {
+    return PRICES.routes.filter(function (route) {
+      return route.from === from && isAbroad(route) === abroad;
+    });
+  }
+
+  function canSwap() {
+    return FARE_ORIGINS.indexOf(fareTo) !== -1 && Boolean(findRoute(fareTo, fareFrom));
   }
 
   function photoHtml(src, alt, className, position) {
@@ -118,47 +154,51 @@
     document.querySelectorAll('[data-call]').forEach(function (el) { el.href = 'tel:' + SITE.phoneNumber; });
     document.querySelectorAll('[data-viber]').forEach(function (el) { el.href = viberUrl; });
     document.querySelectorAll('[data-phone]').forEach(function (el) { el.textContent = SITE.phoneDisplay; });
+    document.querySelectorAll('[data-call-label]').forEach(function (el) { el.setAttribute('aria-label', t('btn.call') + ' ' + SITE.phoneDisplay); });
   }
 
-  function byPrice(a, b) {
-    return typeof a[2] === 'number' && typeof b[2] === 'number' ? a[2] - b[2] : 0;
-  }
-
-  function renderRouteGroups(container, routes) {
-    var groups = {};
-    var order = [];
-
-    routes.forEach(function (route) {
-      if (!groups[route[0]]) {
-        groups[route[0]] = [];
-        order.push(route[0]);
-      }
-      groups[route[0]].push(route);
-    });
-
-    container.innerHTML = order.map(function (from) {
+  function renderPriceList(elementId, routes) {
+    document.getElementById(elementId).innerHTML = routes.map(function (route) {
       return (
-        '<div class="price-group">' +
-          '<p class="plate"><span>' + esc(t('prices.from')) + '</span>' + esc(place(from)) + '</p>' +
-          '<ul class="price-list">' +
-            groups[from].slice().sort(byPrice).map(function (route, i) {
-              var lead = route[3]
-                ? '<span class="plate plate--country">' + esc(route[3]) + '</span>'
-                : '<span class="price-list__n">' + (i < 9 ? '0' : '') + (i + 1) + '</span>';
-              return (
-                '<li data-from="' + route[0] + '" data-to="' + route[1] + '">' +
-                  lead +
-                  '<span class="price-list__route"><span class="arrow">→</span> ' + esc(place(route[1])) + '</span>' +
-                  (route[2] === null
-                    ? '<a class="price-list__ask" data-call href="#kontakt">' + esc(t('prices.ask')) + '</a>'
-                    : '<span class="price-list__price">' + esc(formatPrice(route[2])) + '</span>') +
-                '</li>'
-              );
-            }).join('') +
-          '</ul>' +
-        '</div>'
+        '<li data-from="' + route.from + '" data-to="' + route.to + '">' +
+          '<span class="price-list__route">' + esc(place(route.to)) + '</span>' +
+          priceHtml(route, 'price-list__price') +
+        '</li>'
       );
     }).join('');
+  }
+
+  function renderAbroad() {
+    var routes = routesFrom('skopje', true).sort(function (a, b) { return a.km - b.km; });
+    var farthest = Math.max.apply(null, routes.map(function (route) { return route.km; }));
+
+    abroadList.innerHTML = routes.map(function (route) {
+      return (
+        '<li class="route" style="--distance:' + (route.km / farthest).toFixed(3) + '">' +
+          '<span class="route__city">' + esc(place(route.to)) + '</span>' +
+          '<span class="route__track">' +
+            '<span class="route__line">' + CAR_SVG + '</span>' +
+            '<span class="route__km">~' + route.km + ' ' + esc(t('km')) + '</span>' +
+          '</span>' +
+          priceHtml(route, 'route__price') +
+        '</li>'
+      );
+    }).join('');
+  }
+
+  function driveCars() {
+    var cars = Array.prototype.slice.call(abroadList.querySelectorAll('.route__car'));
+    if (!cars.length) return;
+
+    var box = abroadList.getBoundingClientRect();
+    var viewport = window.innerHeight;
+    var progress = reducedMotion ? 1 : Math.min(Math.max((viewport * 0.9 - box.top) / (box.height + viewport * 0.2), 0), 1);
+    var trips = cars.map(function (car) { return Math.max(car.parentElement.offsetWidth - car.getBoundingClientRect().width - 6, 0); });
+    var longest = Math.max.apply(null, trips);
+
+    cars.forEach(function (car, i) {
+      car.style.transform = 'translateX(' + Math.min(progress * longest, trips[i]).toFixed(1) + 'px)';
+    });
   }
 
   function optionsHtml(keys) {
@@ -167,36 +207,36 @@
     }).join('');
   }
 
-  function allPlaces() {
-    var places = [];
-    PRICES.local.forEach(function (route) {
-      if (places.indexOf(route[0]) === -1) places.push(route[0]);
-      if (places.indexOf(route[1]) === -1) places.push(route[1]);
-    });
-    return places;
-  }
-
-  function destinationsFrom(from) {
-    return allPlaces().filter(function (key) {
-      return key !== from && findPrice(from, key) !== null;
-    });
+  function destinationsHtml(from) {
+    var destination = function (route) { return route.to; };
+    var domestic = routesFrom(from, false).map(destination);
+    var abroad = routesFrom(from, true).map(destination);
+    if (!abroad.length) return optionsHtml(domestic);
+    return (
+      '<optgroup label="' + esc(t('fare.domestic')) + '">' + optionsHtml(domestic) + '</optgroup>' +
+      '<optgroup label="' + esc(t('fare.abroad')) + '">' + optionsHtml(abroad) + '</optgroup>'
+    );
   }
 
   function renderFareOptions() {
-    fromSelect.innerHTML = optionsHtml(allPlaces());
+    fromSelect.innerHTML = optionsHtml(FARE_ORIGINS);
     fromSelect.value = fareFrom;
     renderDestinations();
   }
 
   function renderDestinations() {
-    var destinations = destinationsFrom(fareFrom);
-    if (destinations.indexOf(fareTo) === -1) fareTo = destinations[0];
-    toSelect.innerHTML = optionsHtml(destinations);
+    toSelect.innerHTML = destinationsHtml(fareFrom);
+    if (!findRoute(fareFrom, fareTo)) fareTo = toSelect.options[0].value;
     toSelect.value = fareTo;
+    fareSwap.disabled = !canSwap();
   }
 
   function updateFare(animate) {
-    farePriceEl.textContent = formatPrice(findPrice(fareFrom, fareTo));
+    var route = findRoute(fareFrom, fareTo);
+    var type = priceType(route);
+    farePriceEl.textContent = priceText(route);
+    farePriceEl.classList.toggle('is-text', type === 'meter' || type === 'quote');
+    fareNoteEl.textContent = t('fare.note.' + type);
 
     if (animate) {
       farePriceEl.classList.remove('is-updated');
@@ -204,23 +244,15 @@
       farePriceEl.classList.add('is-updated');
     }
 
-    var rows = priceGroupsEl.querySelectorAll('li');
-    var exact = priceGroupsEl.querySelector('li[data-from="' + fareFrom + '"][data-to="' + fareTo + '"]');
-    var selected = exact || priceGroupsEl.querySelector('li[data-from="' + fareTo + '"][data-to="' + fareFrom + '"]');
-    rows.forEach(function (li) { li.classList.toggle('is-selected', li === selected); });
-  }
-
-  function renderAirport() {
-    document.getElementById('airportRoute').innerHTML =
-      esc(place('airport')) + ' <span class="arrow">→</span> ' + esc(place('skopje'));
-    document.getElementById('airportPrice').textContent = formatPrice(findPrice('airport', 'skopje'));
+    document.querySelectorAll('.price-list li').forEach(function (li) {
+      li.classList.toggle('is-selected', li.dataset.from === fareFrom && li.dataset.to === fareTo);
+    });
   }
 
   function renderDriverTabs() {
     driverTabsEl.innerHTML = SITE.drivers.map(function (driver, i) {
       return (
         '<button class="driver-tab" type="button" role="tab" data-driver="' + i + '" aria-controls="driverPanel" aria-selected="' + (i === activeDriver) + '">' +
-          '<span class="driver-tab__plate">' + esc(driver.plate) + '</span>' +
           '<span>' + esc(pick(driver.name)) + '</span>' +
         '</button>'
       );
@@ -253,7 +285,6 @@
         '<div class="feature__car">' +
           photoHtml(car.photo, model, 'feature__car-photo') +
           '<div>' +
-            '<p class="feature__drives">' + esc(t('drivers.drives')) + '</p>' +
             '<p class="feature__model">' + esc(model) + '</p>' +
             '<ul class="feature__specs">' + car.features.map(function (f) { return '<li>' + esc(pick(f)) + '</li>'; }).join('') + '</ul>' +
           '</div>' +
@@ -299,15 +330,16 @@
 
   function render() {
     translatePage();
-    renderRouteGroups(priceGroupsEl, PRICES.local);
-    renderRouteGroups(document.getElementById('abroad'), PRICES.abroad);
+    renderPriceList('popularRoutes', routesFrom('skopje', false));
+    renderPriceList('airportRoutes', routesFrom('airport', false));
+    renderAbroad();
     renderFareOptions();
     updateFare(false);
-    renderAirport();
     renderDriverTabs();
     renderDriver();
     bindContacts();
     preparePhotos();
+    driveCars();
   }
 
   function setLanguage(next) {
@@ -372,10 +404,11 @@
 
   toSelect.addEventListener('change', function () {
     fareTo = toSelect.value;
+    fareSwap.disabled = !canSwap();
     updateFare(true);
   });
 
-  document.getElementById('fareSwap').addEventListener('click', function () {
+  fareSwap.addEventListener('click', function () {
     var from = fareFrom;
     fareFrom = fareTo;
     fareTo = from;
@@ -437,8 +470,12 @@
     }
   });
 
-  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  function onScroll() {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    driveCars();
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', driveCars);
   onScroll();
 
   if ('IntersectionObserver' in window) {

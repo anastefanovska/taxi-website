@@ -1,7 +1,8 @@
 window.PRICES = {
   places: {
+    city:         ['Низ Скопје', 'Within Skopje'],
     skopje:       ['Скопје', 'Skopje'],
-    airport:      ['Аеродром', 'Airport'],
+    airport:      ['Аеродром Скопје', 'Skopje Airport'],
     kumanovo:     ['Куманово', 'Kumanovo'],
     veles:        ['Велес', 'Veles'],
     tetovo:       ['Тетово', 'Tetovo'],
@@ -15,27 +16,27 @@ window.PRICES = {
     podgorica:    ['Подгорица', 'Podgorica']
   },
 
-  local: [
-    ['skopje',  'airport',  1500],
-    ['airport', 'skopje',   1500],
-    ['airport', 'kumanovo', 1850],
-    ['airport', 'veles',    2500],
-    ['airport', 'tetovo',   3700],
-    ['airport', 'bitola',   6100],
-    ['airport', 'ohrid',    7800],
-    ['skopje',  'kumanovo', 1700],
-    ['skopje',  'tetovo',   1800],
-    ['skopje',  'veles',    2000],
-    ['skopje',  'bitola',   5500],
-    ['skopje',  'ohrid',    6500]
-  ],
+  routes: [
+    { from: 'skopje',  to: 'city',         meter: true },
+    { from: 'skopje',  to: 'airport',      mkd: 1500 },
+    { from: 'skopje',  to: 'kumanovo',     mkd: 1700 },
+    { from: 'skopje',  to: 'tetovo',       mkd: 1800 },
+    { from: 'skopje',  to: 'veles',        mkd: 2000 },
+    { from: 'skopje',  to: 'bitola',       mkd: 5500 },
+    { from: 'skopje',  to: 'ohrid',        mkd: 6500 },
 
-  abroad: [
-    ['skopje', 'pristina',     '€90',  'RKS'],
-    ['skopje', 'thessaloniki', '€140', 'GR'],
-    ['skopje', 'sofia',        '€180', 'BG'],
-    ['skopje', 'tirana',       '€190', 'AL'],
-    ['skopje', 'belgrade',     '€250', 'SRB'],
-    ['skopje', 'podgorica',    '€260', 'MNE']
+    { from: 'airport', to: 'skopje',       mkd: 1500 },
+    { from: 'airport', to: 'kumanovo',     mkd: 1850 },
+    { from: 'airport', to: 'veles',        mkd: 2500 },
+    { from: 'airport', to: 'tetovo',       mkd: 3700 },
+    { from: 'airport', to: 'bitola',       mkd: 6100 },
+    { from: 'airport', to: 'ohrid',        mkd: 7800 },
+
+    { from: 'skopje',  to: 'pristina',     mkd: 5500,  km: 90 },
+    { from: 'skopje',  to: 'thessaloniki', mkd: 8600,  km: 230 },
+    { from: 'skopje',  to: 'sofia',        mkd: 11100, km: 240 },
+    { from: 'skopje',  to: 'tirana',       mkd: 11700, km: 290 },
+    { from: 'skopje',  to: 'podgorica',    mkd: 15400, km: 370 },
+    { from: 'skopje',  to: 'belgrade',     mkd: 16000, km: 430 }
   ]
 };

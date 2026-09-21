@@ -6,7 +6,6 @@ window.SITE = {
 
   drivers: [
     {
-      plate:  'SK 01',
       name:   ['Дарко', 'Darko'],
       line:   ['Смирено возење. Добар разговор.', 'Calm driving. Good conversation.'],
       photos: ['assets/images/drivers/darko.jpg', 'assets/images/drivers/darko-02.jpg', 'assets/images/drivers/darko-03.jpg'],
@@ -18,9 +17,8 @@ window.SITE = {
       }
     },
     {
-      plate:  'SK 02',
       name:   ['Марко', 'Marko'],
-      line:   ['За град, аеродром или малку подолг пат.', 'For city rides, airports, or a longer journey.'],
+      line:   ['За град, аеродром или подолг пат.', 'For the city, the airport, or a longer road.'],
       photos: ['assets/images/drivers/marko.jpg', 'assets/images/drivers/marko-02.jpg', 'assets/images/drivers/marko-03.jpg'],
       focus:  '62% center',
       car: {
