@@ -63,6 +63,11 @@
     return pick(PRICES.places[key]);
   }
 
+  function fullPlace(key) {
+    var full = PRICES.fullNames && PRICES.fullNames[key];
+    return full ? pick(full) : place(key);
+  }
+
   function esc(text) {
     return String(text).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -80,18 +85,27 @@
     return 'quote';
   }
 
-  function priceText(route) {
-    var type = priceType(route);
-    if (type === 'meter') return t('price.meter');
-    if (type === 'quote') return t('price.quote');
-    var amount = route.mkd ? formatMkd(route.mkd) : '€' + route.eur;
-    return type === 'from' ? t('price.from') + ' ' + amount : amount;
+  function priceAmount(route) {
+    return route.mkd ? formatMkd(route.mkd) : '€' + route.eur;
+  }
+
+  function tagHtml(key, before) {
+    return '<small class="price__tag' + (before ? ' price__tag--before' : '') + '">' + esc(t(key)) + '</small>';
   }
 
   function priceHtml(route, className) {
     var type = priceType(route);
     if (type === 'quote') return '<a class="price-ask" data-call href="#kontakt">' + esc(t('price.quote')) + '</a>';
-    return '<span class="' + className + (type === 'meter' ? ' is-meter' : '') + '">' + esc(priceText(route)) + '</span>';
+    if (type === 'meter') return '<span class="' + className + ' is-meter">' + esc(t('price.meter')) + '</span>';
+    return '<span class="' + className + '">' + (type === 'from' ? tagHtml('price.from', true) : '') + esc(priceAmount(route)) + '</span>';
+  }
+
+  function routeFareHtml(route) {
+    var type = priceType(route);
+    if (type === 'quote') return '<span class="route__fare">' + priceHtml(route) + '</span>';
+    var amount = '<span class="route__price">' + esc(priceAmount(route)) + '</span>';
+    if (type === 'from') return '<span class="route__fare">' + tagHtml('price.from') + amount + '</span>';
+    return '<span class="route__fare">' + amount + '</span>';
   }
 
   function findRoute(from, to) {
@@ -161,7 +175,7 @@
     document.getElementById(elementId).innerHTML = routes.map(function (route) {
       return (
         '<li data-from="' + route.from + '" data-to="' + route.to + '">' +
-          '<span class="price-list__route">' + esc(place(route.to)) + '</span>' +
+          '<span class="price-list__route">' + esc(fullPlace(route.to)) + '</span>' +
           priceHtml(route, 'price-list__price') +
         '</li>'
       );
@@ -180,7 +194,7 @@
             '<span class="route__line">' + CAR_SVG + '</span>' +
             '<span class="route__km">~' + route.km + ' ' + esc(t('km')) + '</span>' +
           '</span>' +
-          priceHtml(route, 'route__price') +
+          routeFareHtml(route) +
         '</li>'
       );
     }).join('');
@@ -208,14 +222,7 @@
   }
 
   function destinationsHtml(from) {
-    var destination = function (route) { return route.to; };
-    var domestic = routesFrom(from, false).map(destination);
-    var abroad = routesFrom(from, true).map(destination);
-    if (!abroad.length) return optionsHtml(domestic);
-    return (
-      '<optgroup label="' + esc(t('fare.domestic')) + '">' + optionsHtml(domestic) + '</optgroup>' +
-      '<optgroup label="' + esc(t('fare.abroad')) + '">' + optionsHtml(abroad) + '</optgroup>'
-    );
+    return optionsHtml(routesFrom(from, false).map(function (route) { return route.to; }));
   }
 
   function renderFareOptions() {
@@ -234,7 +241,9 @@
   function updateFare(animate) {
     var route = findRoute(fareFrom, fareTo);
     var type = priceType(route);
-    farePriceEl.textContent = priceText(route);
+    farePriceEl.innerHTML = type === 'meter' || type === 'quote'
+      ? esc(t(type === 'meter' ? 'price.meter' : 'price.quote'))
+      : (type === 'from' ? tagHtml('price.from') : '') + esc(priceAmount(route));
     farePriceEl.classList.toggle('is-text', type === 'meter' || type === 'quote');
     fareNoteEl.textContent = t('fare.note.' + type);
 
@@ -243,10 +252,6 @@
       void farePriceEl.offsetWidth;
       farePriceEl.classList.add('is-updated');
     }
-
-    document.querySelectorAll('.price-list li').forEach(function (li) {
-      li.classList.toggle('is-selected', li.dataset.from === fareFrom && li.dataset.to === fareTo);
-    });
   }
 
   function renderDriverTabs() {

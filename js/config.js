@@ -22,7 +22,7 @@ window.SITE = {
       photos: ['assets/images/drivers/marko.jpg', 'assets/images/drivers/marko-02.jpg', 'assets/images/drivers/marko-03.jpg'],
       focus:  '62% center',
       car: {
-        model:    ['[Втор автомобил]', '[Second vehicle]'],
+        model:    'Škoda Octavia',
         photo:    'assets/images/cars/car-marko.jpg',
         features: [['4 патници', '4 passengers'], ['2–3 куфери', '2–3 bags'], ['Клима', 'Air conditioning']]
       }

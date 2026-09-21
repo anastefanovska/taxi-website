@@ -16,6 +16,11 @@ window.PRICES = {
     podgorica:    ['Подгорица', 'Podgorica']
   },
 
+  // Подолго име во табелите со цени (во пребарувачот останува краткото).
+  fullNames: {
+    airport:      ['Меѓународен Аеродром Скопје', 'Skopje International Airport']
+  },
+
   routes: [
     { from: 'skopje',  to: 'city',         meter: true },
     { from: 'skopje',  to: 'airport',      mkd: 1500 },
