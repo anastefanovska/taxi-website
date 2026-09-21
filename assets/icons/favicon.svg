@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
-     role="img" aria-label="Вардар Такси">
-  <rect width="64" height="64" rx="14" fill="#0a0b0d"/>
-  <rect x="8" y="26" width="48" height="10" fill="#ffc21a"/>
-  <g fill="#0a0b0d">
-    <rect x="8" y="26" width="8" height="5"/>
-    <rect x="24" y="26" width="8" height="5"/>
-    <rect x="40" y="26" width="8" height="5"/>
-    <rect x="16" y="31" width="8" height="5"/>
-    <rect x="32" y="31" width="8" height="5"/>
-    <rect x="48" y="31" width="8" height="5"/>
-  </g>
-  <path d="M20 48V40h24v8" fill="none" stroke="#ffc21a" stroke-width="4" stroke-linecap="round"/>
-  <path d="M22 22l3-8h14l3 8" fill="none" stroke="#ffc21a" stroke-width="4"
-        stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2F6BFF"/><path d="M9 10l7 13 7-13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>

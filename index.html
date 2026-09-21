@@ -2,814 +2,265 @@
 <html lang="mk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0B0C0E" />
-
-  <title data-i18n="meta.title">Вардар Такси — Такси превоз во Скопје 24/7 | Јави се: 070 123 456</title>
-  <meta name="description" data-i18n-attr="content:meta.description"
-        content="Вардар Такси — професионален такси превоз во Скопје и околината. Достапни 24/7, аеродромски трансфери, меѓуградски превоз и фиксни цени договорени однапред. Јавете се на 070 123 456." />
-  <meta name="keywords" content="такси Скопје, такси превоз, аеродромски трансфер, меѓуградски превоз, такси 24/7, taxi Skopje, airport transfer" />
-  <link rel="canonical" href="https://anastefanovska.github.io/taxi-website/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="mk_MK" />
-  <meta property="og:title" data-i18n-attr="content:meta.ogTitle" content="Вардар Такси — Такси превоз во Скопје 24/7" />
-  <meta property="og:description" data-i18n-attr="content:meta.ogDescription"
-        content="Брзо, безбедно и точно до секоја адреса. Достапни 24 часа, 7 дена во неделата." />
-  <meta property="og:url" content="https://anastefanovska.github.io/taxi-website/" />
-  <meta property="og:image" content="https://anastefanovska.github.io/taxi-website/assets/images/hero-taxi.svg" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Вардар Такси — Ти кажи каде. Ние знаеме пат.</title>
+  <meta name="description" content="Такси низ Скопје, низ Македонија и преку граница. Јасни цени, двајца возачи." />
+  <meta name="theme-color" content="#F7F6F1" />
+  <meta property="og:title" content="Вардар Такси" />
+  <meta property="og:description" content="Ти кажи каде. Ние знаеме пат." />
+  <meta property="og:image" content="assets/images/hero.jpg" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/icons/favicon.svg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-  <a class="skip-link" href="#main" data-i18n="a11y.skip">Оди на главна содржина</a>
 
-  <header class="site-header" id="header">
+  <a class="skip" href="#main" data-i18n="skip">Прескокни до содржината</a>
+
+  <header class="header" id="header">
     <div class="container header__inner">
+      <a class="logo" href="#pocetna" data-site-name>Вардар Такси</a>
 
-      <a class="brand" href="#hero" data-i18n-attr="aria-label:a11y.brandHome" aria-label="Вардар Такси — почетна">
-        <span class="brand__mark" aria-hidden="true">
-          <svg class="ic"><use href="assets/icons/sprite.svg#taxi"></use></svg>
-        </span>
-        <span class="brand__text">
-          <strong data-i18n="brand.name">ВАРДАР</strong>
-          <span data-i18n="brand.word">ТАКСИ</span>
-        </span>
-      </a>
-
-      <nav class="nav" id="nav" data-i18n-attr="aria-label:a11y.mainNav" aria-label="Главна навигација">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="#hero" data-i18n="nav.home">Почетна</a></li>
-          <li><a class="nav__link" href="#about" data-i18n="nav.about">За нас</a></li>
-          <li><a class="nav__link" href="#services" data-i18n="nav.services">Услуги</a></li>
-          <li><a class="nav__link" href="#pricing" data-i18n="nav.pricing">Цени</a></li>
-          <li><a class="nav__link" href="#contact" data-i18n="nav.contact">Контакт</a></li>
-        </ul>
-
-        <div class="nav__cta">
-          <a class="btn btn--primary btn--sm" href="tel:+38970123456" data-call="main" data-track="call-nav">
-            <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-            <span class="nav__ctaLabel" data-i18n="cta.call">Јави се</span>
-            <span class="nav__ctaPhone" data-phone>070 123 456</span>
-          </a>
-          <p class="nav__note">
-            <span data-phone>070 123 456</span>
-            <span aria-hidden="true">·</span>
-            <span data-i18n="contact.hoursShort">достапни 24/7</span>
-          </p>
+      <nav class="nav" id="nav">
+        <a href="#pocetna" data-i18n="nav.home">Почетна</a>
+        <a href="#ceni" data-i18n="nav.prices">Цени</a>
+        <a href="#vozaci" data-i18n="nav.drivers">Возачи</a>
+        <a href="#aerodrom" data-i18n="nav.airport">Аеродром</a>
+        <a href="#patuvanja" data-i18n="nav.trips">Меѓународни патувања</a>
+        <a href="#kontakt" data-i18n="nav.contact">Контакт</a>
+        <div class="lang-switch lang-switch--menu" role="group" data-i18n-aria="lang.label" aria-label="Јазик" data-active="mk">
+          <button type="button" data-lang="mk">MK</button>
+          <button type="button" data-lang="en">EN</button>
         </div>
       </nav>
 
-      <div class="header__tools">
-        <div class="lang" role="group" data-i18n-attr="aria-label:a11y.language" aria-label="Јазик">
-          <button class="lang__btn is-active" type="button" data-lang="mk" lang="mk" aria-pressed="true">MK</button>
-          <button class="lang__btn" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+      <div class="header__actions">
+        <div class="lang-switch lang-switch--bar" role="group" data-i18n-aria="lang.label" aria-label="Јазик" data-active="mk">
+          <button type="button" data-lang="mk">MK</button>
+          <button type="button" data-lang="en">EN</button>
         </div>
-
-        <button class="burger" id="burger" type="button"
-                data-i18n-attr="aria-label:a11y.openMenu" aria-label="Отвори мени"
-                aria-expanded="false" aria-controls="nav">
-          <span class="burger__box" aria-hidden="true">
-            <span class="burger__line"></span>
-            <span class="burger__line"></span>
-            <span class="burger__line"></span>
-          </span>
+        <a class="btn btn--blue btn--sm header__contact" data-call href="#kontakt" data-phone>+389 70 123 456</a>
+        <a class="btn btn--line btn--sm header__contact" data-viber href="#kontakt">Viber</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">
+          <span class="menu-btn__lines" aria-hidden="true"></span>
+          <span class="sr-only" data-i18n="menu">Мени</span>
         </button>
       </div>
-
     </div>
   </header>
-  <div class="nav-scrim" id="navScrim" hidden></div>
 
   <main id="main">
 
-    <section class="hero" id="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <div class="container hero__inner">
-
-        <div class="hero__copy">
-          <p class="badge">
-            <span class="badge__dot" aria-hidden="true"></span>
-            <span data-i18n="hero.badge">Достапни 24/7 — Скопје и околината</span>
-          </p>
-
-          <h1 class="hero__title" data-i18n-html="hero.title">
-            Брзо, безбедно и <span class="hl">точно на време</span> — до секоја адреса.
-          </h1>
-
-          <p class="hero__lead" data-i18n="hero.lead">
-            Личен такси превоз со проверен возач. Едно јавување е доволно —
-            возилото е пред вас за неколку минути, а цената ја знаете однапред.
-          </p>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary btn--lg" href="tel:+38970123456" data-call="main" data-track="call-hero">
-              <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-              <span data-i18n="cta.callNow">Јави се веднаш</span>
-            </a>
-            <a class="btn btn--ghost btn--lg" href="#request">
-              <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#route"></use></svg>
-              <span data-i18n="cta.request">Побарај превоз</span>
-            </a>
-          </div>
-
-          <ul class="hero__facts">
-            <li><strong>5–10 мин.</strong><span data-i18n="hero.fact1">просечно доаѓање</span></li>
-            <li><strong data-i18n="hero.fact2n">12+ години</strong><span data-i18n="hero.fact2">искуство на пат</span></li>
-            <li><strong>24/7</strong><span data-i18n="hero.fact3">секој ден во годината</span></li>
-          </ul>
+    <section class="hero" id="pocetna">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="plate plate--solid hero__plate" data-i18n="hero.label">Такси Скопје · 24/7</p>
+          <h1 data-i18n="hero.title">Ти кажи каде.<br>Ние знаеме <span class="marker">пат.</span></h1>
+          <p class="lead" data-i18n="hero.lead">Такси низ Скопје, низ Македонија и преку граница.</p>
         </div>
 
-        <div class="hero__media">
-          <img src="assets/images/hero-taxi.svg"
-               data-i18n-attr="alt:hero.imageAlt"
-               alt="Такси возило на улица во Скопје ноќе"
-               width="800" height="500" fetchpriority="high" />
-          <div class="hero__plate">
-            <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#shield"></use></svg>
-            <div>
-              <strong data-i18n="hero.plateTitle">Лиценциран превоз</strong>
-              <span data-i18n="hero.plateText">Регистрирано и осигурано возило</span>
+        <form class="fare" id="fare" onsubmit="return false">
+          <div class="fare__route">
+            <div class="fare__stop">
+              <label for="fareFrom" data-i18n="fare.from">Од</label>
+              <select id="fareFrom"></select>
+            </div>
+            <button class="fare__swap" id="fareSwap" type="button" data-i18n-aria="fare.swap" aria-label="Замени ги правците">⇅</button>
+            <div class="fare__stop">
+              <label for="fareTo" data-i18n="fare.to">До</label>
+              <select id="fareTo"></select>
             </div>
           </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="trust" data-i18n-attr="aria-label:trust.label" aria-label="Зошто да ни верувате">
-      <div class="container">
-        <ul class="trust__grid">
-          <li class="trust__item" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#clock"></use></svg>
-            <div>
-              <h3 data-i18n="trust.t1">Достапност 24/7</h3>
-              <p data-i18n="trust.s1">Ден, ноќ, викенд и празник.</p>
-            </div>
-          </li>
-          <li class="trust__item" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#bolt"></use></svg>
-            <div>
-              <h3 data-i18n="trust.t2">Брз одговор</h3>
-              <p data-i18n="trust.s2">Се јавуваме во првите секунди.</p>
-            </div>
-          </li>
-          <li class="trust__item" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#shield"></use></svg>
-            <div>
-              <h3 data-i18n="trust.t3">Безбедно возење</h3>
-              <p data-i18n="trust.s3">Мирно, трезвено и одговорно.</p>
-            </div>
-          </li>
-          <li class="trust__item" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#plane"></use></svg>
-            <div>
-              <h3 data-i18n="trust.t4">Аеродромски трансфери</h3>
-              <p data-i18n="trust.s4">Со следење на летот.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-
-        <header class="section__head" data-reveal>
-          <p class="eyebrow" data-i18n="crew.eyebrow">За нас</p>
-          <h2 class="section__title" data-i18n="crew.title">Запознајте ги возачите</h2>
-          <p class="section__lead" data-i18n="crew.lead">
-            Знаете кој доаѓа. Знаете со кое возило патувате.
-          </p>
-        </header>
-
-        <div class="crew" id="crew" data-reveal>
-
-          <div class="crew__picker" role="group" data-i18n-attr="aria-label:crew.carousel"
-               aria-label="Возачи и нивните возила">
-            <button class="crew__pick is-active" type="button" data-crew-go="1" aria-current="true">
-              <img src="assets/images/driver-1.svg" data-crew-photo="1" alt="" width="64" height="64" />
-              <span data-i18n="crew.d1Name">Дарко</span>
-            </button>
-            <button class="crew__pick" type="button" data-crew-go="2" aria-current="false">
-              <img src="assets/images/driver-2.svg" data-crew-photo="2" alt="" width="64" height="64" />
-              <span data-i18n="crew.d2Name">Марко</span>
-            </button>
+          <div class="fare__result" aria-live="polite">
+            <p class="fare__price" id="farePrice">1.500 ден.</p>
+            <p class="fare__note" data-i18n="fare.fixed">Фиксна цена</p>
           </div>
+          <a class="btn btn--blue btn--block" data-call href="#kontakt" data-i18n="fare.call">Повикај</a>
+        </form>
 
-          <div class="crew__viewport" id="crewViewport" tabindex="0" role="group"
-               aria-roledescription="carousel" data-i18n-attr="aria-label:crew.carousel"
-               aria-label="Возачи и нивните возила">
-
-            <article class="crew__slide" data-crew-slide="1" role="group"
-                     aria-roledescription="slide" aria-label="Возач 1 од 2">
-
-              <div class="crew__person">
-                <div class="crew__portrait">
-                  <img src="assets/images/driver-1.svg" data-crew-photo="1"
-                       data-i18n-attr="alt:crew.d1Alt" alt="Дарко — професионален такси возач"
-                       width="640" height="640" loading="lazy" />
-                </div>
-
-                <div class="crew__personBody">
-                  <h3 class="crew__name" data-i18n="crew.d1Name">Дарко</h3>
-                  <p class="crew__role" data-i18n="crew.role">Професионален возач</p>
-                  <p class="crew__quote" data-i18n="crew.d1Quote">„Го знам градот. Доаѓам брзо и возам мирно.“</p>
-
-                  <ul class="chips">
-                    <li data-i18n="crew.d1Tag1">Градски возења</li>
-                    <li data-i18n="crew.d1Tag2">Го знае Скопје</li>
-                  </ul>
-                </div>
-
-                <a class="btn btn--primary crew__call" href="tel:+38970123456" data-call="1" data-track="call-driver-1">
-                  <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-                  <span data-i18n="crew.d1Call">Јави се на Дарко</span>
-                </a>
-              </div>
-
-              <figure class="crew__car">
-                <img src="assets/images/car-1.svg" data-crew-car="1"
-                     data-i18n-attr="alt:crew.d1CarAlt" alt="Црн седан — возилото на Дарко"
-                     width="800" height="500" loading="lazy" />
-
-                <figcaption class="crew__carBody">
-                  <p class="crew__carLabel">
-                    <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#taxi"></use></svg>
-                    <span data-i18n="crew.vehicleLabel">Доаѓа со ова возило</span>
-                  </p>
-                  <h4 class="crew__carName" data-i18n="crew.d1Car">Седан · црна боја</h4>
-                  <p class="crew__carDesc" data-i18n="crew.d1CarDesc">Удобен седан за секојдневни возења низ градот.</p>
-
-                  <ul class="crew__specs">
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#users"></use></svg>
-                      <span data-i18n="crew.spec1">4 патници</span>
-                    </li>
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#sparkle"></use></svg>
-                      <span data-i18n="crew.spec2">Клима</span>
-                    </li>
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#briefcase"></use></svg>
-                      <span data-i18n="crew.d1Spec3">2 куфери</span>
-                    </li>
-                  </ul>
-                </figcaption>
-              </figure>
-
-            </article>
-
-            <article class="crew__slide" data-crew-slide="2" role="group"
-                     aria-roledescription="slide" aria-label="Возач 2 од 2">
-
-              <div class="crew__person">
-                <div class="crew__portrait">
-                  <img src="assets/images/driver-2.svg" data-crew-photo="2"
-                       data-i18n-attr="alt:crew.d2Alt" alt="Марко — професионален такси возач"
-                       width="640" height="640" loading="lazy" />
-                </div>
-
-                <div class="crew__personBody">
-                  <h3 class="crew__name" data-i18n="crew.d2Name">Марко</h3>
-                  <p class="crew__role" data-i18n="crew.role">Професионален возач</p>
-                  <p class="crew__quote" data-i18n="crew.d2Quote">„Ноќни смени и рани летови — секогаш на време.“</p>
-
-                  <ul class="chips">
-                    <li data-i18n="crew.d2Tag1">Ноќна смена</li>
-                    <li data-i18n="crew.d2Tag2">Аеродром</li>
-                  </ul>
-                </div>
-
-                <a class="btn btn--primary crew__call" href="tel:+38970123457" data-call="2" data-track="call-driver-2">
-                  <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-                  <span data-i18n="crew.d2Call">Јави се на Марко</span>
-                </a>
-              </div>
-
-              <figure class="crew__car">
-                <img src="assets/images/car-2.svg" data-crew-car="2"
-                     data-i18n-attr="alt:crew.d2CarAlt" alt="Сив седан — возилото на Марко"
-                     width="800" height="500" loading="lazy" />
-
-                <figcaption class="crew__carBody">
-                  <p class="crew__carLabel">
-                    <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#taxi"></use></svg>
-                    <span data-i18n="crew.vehicleLabel">Доаѓа со ова возило</span>
-                  </p>
-                  <h4 class="crew__carName" data-i18n="crew.d2Car">Седан · сива боја</h4>
-                  <p class="crew__carDesc" data-i18n="crew.d2CarDesc">Со повеќе простор за багаж — за аеродром и подолги релации.</p>
-
-                  <ul class="crew__specs">
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#users"></use></svg>
-                      <span data-i18n="crew.spec1">4 патници</span>
-                    </li>
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#sparkle"></use></svg>
-                      <span data-i18n="crew.spec2">Клима</span>
-                    </li>
-                    <li>
-                      <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#briefcase"></use></svg>
-                      <span data-i18n="crew.d2Spec3">3 куфери</span>
-                    </li>
-                  </ul>
-                </figcaption>
-              </figure>
-
-            </article>
-
-          </div>
-
-          <div class="crew__nav">
-            <button class="crew__arrow crew__arrow--prev" type="button" data-crew-prev
-                    data-i18n-attr="aria-label:crew.prev" aria-label="Претходен возач">
-              <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#arrow"></use></svg>
-            </button>
-
-            <p class="crew__count">
-              <strong data-crew-index>1</strong>
-              <span aria-hidden="true">/</span>
-              <span data-crew-total>2</span>
-            </p>
-
-            <button class="crew__arrow crew__arrow--next" type="button" data-crew-next
-                    data-i18n-attr="aria-label:crew.next" aria-label="Следен возач">
-              <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#arrow"></use></svg>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section section--alt" id="services">
-      <div class="container">
-        <header class="section__head" data-reveal>
-          <p class="eyebrow" data-i18n="services.eyebrow">Услуги</p>
-          <h2 class="section__title" data-i18n="services.title">Превоз за секоја потреба</h2>
-          <p class="section__lead" data-i18n="services.lead">Кажете ја релацијата — останатото е наша работа.</p>
-        </header>
-
-        <ul class="services">
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#city"></use></svg>
-            <h3 data-i18n="services.s1">Градски превоз</h3>
-            <p data-i18n="services.s1d">Брзо и удобно низ цело Скопје.</p>
-          </li>
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#plane"></use></svg>
-            <h3 data-i18n="services.s2">Аеродромски трансфер</h3>
-            <p data-i18n="services.s2d">Превоз до и од аеродром, со следење на летот.</p>
-          </li>
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#route"></use></svg>
-            <h3 data-i18n="services.s3">Меѓуградски превоз</h3>
-            <p data-i18n="services.s3d">Охрид, Битола, Тетово и други градови.</p>
-          </li>
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#hotel"></use></svg>
-            <h3 data-i18n="services.s4">Хотелски трансфер</h3>
-            <p data-i18n="services.s4d">Пречек и помош со багажот.</p>
-          </li>
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#briefcase"></use></svg>
-            <h3 data-i18n="services.s5">Деловни патувања</h3>
-            <p data-i18n="services.s5d">Точен превоз за состаноци и гости.</p>
-          </li>
-          <li class="service" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#calendar"></use></svg>
-            <h3 data-i18n="services.s6">Закажано возење</h3>
-            <p data-i18n="services.s6d">Договорете го возењето еден ден однапред.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="pricing">
-      <div class="container">
-        <header class="section__head" data-reveal>
-          <p class="eyebrow" data-i18n="pricing.eyebrow">Цени</p>
-          <h2 class="section__title" data-i18n="pricing.title">Јасни цени, без изненадувања</h2>
-          <p class="section__lead" data-i18n="pricing.lead">
-            Ориентациони цени за најчестите релации. Точната цена ја договараме пред поаѓање.
-          </p>
-        </header>
-
-        <ul class="pricing">
-          <li class="price-card" data-reveal>
-            <div class="price-card__head">
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#city"></use></svg>
-              <h3 data-i18n="pricing.p1">Градски превоз</h3>
-            </div>
-            <p class="price">
-              <span data-i18n="pricing.from">Од</span>
-              <span data-price="city">150</span>
-              <small data-i18n="pricing.den">ден.</small>
-            </p>
-            <p class="price-card__desc" data-i18n="pricing.p1d">Релации во рамки на Скопје. Ноќна тарифа по договор.</p>
-          </li>
-
-          <li class="price-card price-card--featured" data-reveal>
-            <span class="price-card__tag" data-i18n="pricing.tag">Најбарано</span>
-            <div class="price-card__head">
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#plane"></use></svg>
-              <h3 data-i18n="pricing.p2">Аеродром Скопје</h3>
-            </div>
-            <p class="price">
-              <span data-i18n="pricing.from">Од</span>
-              <span data-price="airport">1.200</span>
-              <small data-i18n="pricing.den">ден.</small>
-            </p>
-            <p class="price-card__desc" data-i18n="pricing.p2d">Фиксна цена во двата правца, со чекање до 45 минути.</p>
-          </li>
-
-          <li class="price-card" data-reveal>
-            <div class="price-card__head">
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#route"></use></svg>
-              <h3 data-i18n="pricing.p3">Меѓуградски превоз</h3>
-            </div>
-            <p class="price price--text" data-i18n="pricing.p3v">По договор</p>
-            <p class="price-card__desc" data-i18n="pricing.p3d">Цената зависи од градот и од тоа дали е во еден правец.</p>
-          </li>
-        </ul>
-
-        <div class="pricing__foot" data-reveal>
-          <p class="note">
-            <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#info"></use></svg>
-            <span data-i18n="pricing.note">
-              Цените се ориентациони и зависат од релацијата, времето на чекање,
-              бројот на патници и багажот. Плаќање во готово или на сметка.
-            </span>
-          </p>
-          <a class="btn btn--primary" href="tel:+38970123456" data-call="main" data-track="call-pricing">
-            <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-            <span data-i18n="cta.askPrice">Прашај за цена</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section steps-section" id="how">
-      <div class="container">
-        <header class="section__head section__head--light" data-reveal>
-          <p class="eyebrow" data-i18n="how.eyebrow">Како функционира</p>
-          <h2 class="section__title" data-i18n="how.title">Три чекори до вашето возење</h2>
-        </header>
-
-        <ol class="steps">
-          <li class="step" data-reveal>
-            <span class="step__num" aria-hidden="true">1</span>
-            <h3 data-i18n="how.s1">Јавете се</h3>
-            <p data-step-phone="how.s1link">
-              Едно јавување на <a href="tel:+38970123456" data-call="main" data-phone>070 123 456</a>, во било кое време.
-            </p>
-          </li>
-          <li class="step" data-reveal>
-            <span class="step__num" aria-hidden="true">2</span>
-            <h3 data-i18n="how.s2">Кажете каде сте</h3>
-            <p data-i18n="how.s2d">Адреса или позната точка во близина — доволно е за да ве најдеме.</p>
-          </li>
-          <li class="step" data-reveal>
-            <span class="step__num" aria-hidden="true">3</span>
-            <h3 data-i18n="how.s3">Пристигнуваме</h3>
-            <p data-i18n="how.s3d">Обично за 5 до 10 минути, зависно од локацијата и сообраќајот.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="why">
-      <div class="container">
-        <header class="section__head" data-reveal>
-          <p class="eyebrow" data-i18n="why.eyebrow">Зошто ние</p>
-          <h2 class="section__title" data-i18n="why.title">Мали работи што прават разлика</h2>
-        </header>
-
-        <ul class="reasons">
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#shield"></use></svg>
-            <div>
-              <h3 data-i18n="why.w1">Безбедно возење</h3>
-              <p data-i18n="why.w1d">Исправни возила и возачи што не брзаат непотребно.</p>
-            </div>
-          </li>
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#moon"></use></svg>
-            <div>
-              <h3 data-i18n="why.w2">Достапни 24/7</h3>
-              <p data-i18n="why.w2d">И ноќе, и на празник, и во рани зори.</p>
-            </div>
-          </li>
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#map"></use></svg>
-            <div>
-              <h3 data-i18n="why.w3">Го познаваме Скопје</h3>
-              <p data-i18n="why.w3d">Најкраток пат до вашата адреса, без обиколки.</p>
-            </div>
-          </li>
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#sparkle"></use></svg>
-            <div>
-              <h3 data-i18n="why.w4">Чисти возила</h3>
-              <p data-i18n="why.w4d">Уредна внатрешност и клима во секое возење.</p>
-            </div>
-          </li>
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#wallet"></use></svg>
-            <div>
-              <h3 data-i18n="why.w5">Цена договорена однапред</h3>
-              <p data-i18n="why.w5d">Ја кажуваме по телефон и таа важи на крајот.</p>
-            </div>
-          </li>
-          <li class="reason" data-reveal>
-            <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#users"></use></svg>
-            <div>
-              <h3 data-i18n="why.w6">Исти луѓе секој пат</h3>
-              <p data-i18n="why.w6d">Не е диспечер — доаѓа возач што веќе го знаете.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="area">
-      <div class="container area__inner">
-
-        <div class="area__copy" data-reveal>
-          <p class="eyebrow" data-i18n="area.eyebrow">Подрачје на работа</p>
-          <h2 class="section__title" data-i18n="area.title">Скопје и околината</h2>
-          <p class="section__lead" data-i18n="area.lead">
-            Ги покриваме сите градски општини, а по договор возиме и надвор од градот.
-          </p>
-
-          <ul class="tags">
-            <li data-i18n="area.a1">Центар</li>
-            <li data-i18n="area.a2">Карпош</li>
-            <li data-i18n="area.a3">Аеродром</li>
-            <li data-i18n="area.a4">Кисела Вода</li>
-            <li data-i18n="area.a5">Ѓорче Петров</li>
-            <li data-i18n="area.a6">Чаир</li>
-            <li data-i18n="area.a7">Бутел</li>
-            <li data-i18n="area.a8">Гази Баба</li>
-            <li data-i18n="area.a9">Драчево</li>
-            <li data-i18n="area.a10">Сарај</li>
-            <li data-i18n="area.a11">Илинден</li>
-            <li data-i18n="area.a12">Петровец</li>
-          </ul>
-
-          <p class="area__note" data-i18n="area.note">
-            Меѓуградски релации: Тетово, Куманово, Велес, Битола, Охрид и останатите градови.
-          </p>
-
-          <a class="btn btn--dark" href="https://www.google.com/maps/place/Skopje"
-             data-link="maps" target="_blank" rel="noopener noreferrer">
-            <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#pin"></use></svg>
-            <span data-i18n="area.maps">Отвори во Google Maps</span>
-          </a>
-        </div>
-
-        <figure class="area__map" data-reveal>
-          <img src="assets/images/map-skopje.svg"
-               data-i18n-attr="alt:area.mapAlt"
-               alt="Илустрирана мапа на подрачјето на работа во Скопје"
-               width="760" height="620" loading="lazy" />
-          <figcaption data-i18n="area.mapCaption">Ориентациски приказ на подрачјето на работа</figcaption>
+        <figure class="hero__photo photo">
+          <img src="assets/images/hero.jpg" alt="Насмеан возач и патничка во автомобил" data-i18n-alt="hero.alt" width="1800" height="1201" />
         </figure>
-
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="container contact__inner">
+    <section class="section section--white" id="ceni">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="prices.label">Цени</p>
+            <h2 data-i18n="prices.title">Од тука <span class="arrow">→</span> до таму.</h2>
+          </div>
+          <p class="section__lead" data-i18n="prices.lead">Без погодување.</p>
+        </div>
+        <div class="price-groups" id="priceGroups"></div>
+        <p class="price-missing" data-i18n="prices.missing">Не ја гледате вашата релација? <a data-call href="#kontakt">Прашајте нè.</a></p>
+      </div>
+    </section>
 
-        <div class="contact__info" data-reveal>
-          <p class="eyebrow eyebrow--light" data-i18n="contact.eyebrow">Контакт</p>
-          <h2 class="section__title" data-i18n="contact.title">Едно јавување е доволно</h2>
-          <p class="section__lead" data-i18n="contact.lead">
-            Најбрзо е по телефон. Ако сте во странство или Ви е попогодно да пишувате —
-            достапни сме и на Viber и WhatsApp.
-          </p>
+    <section class="section" id="vozaci">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-i18n="drivers.label">Возачи и возила</p>
+            <h2 data-i18n="drivers.title">Кој ве вози?</h2>
+          </div>
+          <p class="section__lead" data-i18n="drivers.lead">Две коли. Двајца возачи. Едноставно.</p>
+        </div>
+        <div class="driver-tabs" id="driverTabs" role="tablist" data-i18n-aria="drivers.tabs" aria-label="Изберете возач"></div>
+        <div class="feature" id="driverPanel" role="tabpanel"></div>
+      </div>
+    </section>
 
-          <a class="call-card" href="tel:+38970123456" data-call="main" data-track="call-contact">
-            <span class="call-card__icon" aria-hidden="true">
-              <svg class="ic ic--md"><use href="assets/icons/sprite.svg#phone"></use></svg>
-            </span>
-            <span class="call-card__body">
-              <small data-i18n="cta.callNow">Јави се веднаш</small>
-              <strong data-phone>070 123 456</strong>
-            </span>
-            <svg class="ic call-card__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#arrow"></use></svg>
-          </a>
+    <section class="section section--white" id="aerodrom">
+      <div class="container airport">
+        <figure class="airport__photo photo">
+          <img src="assets/images/airport.jpg" alt="Автомобил пред аеродромски терминал" data-i18n-alt="airport.alt" width="1600" height="1067" loading="lazy" />
+        </figure>
+        <div>
+          <p class="eyebrow" data-i18n="airport.label">Аеродром</p>
+          <h2 data-i18n="airport.title">Слетавте?<br>Клучевите се спремни.</h2>
+          <div class="ticket">
+            <p class="ticket__route" id="airportRoute">Аеродром → Скопје</p>
+            <p class="ticket__price" id="airportPrice">1.500 ден.</p>
+          </div>
+          <p class="section__lead" data-i18n="airport.lead">Директно до вашата адреса.</p>
+        </div>
+      </div>
+    </section>
 
-          <ul class="contact__list">
-            <li>
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#clock"></use></svg>
-              <div>
-                <strong data-i18n="contact.hoursTitle">Работно време</strong>
-                <span data-i18n="contact.hoursText">24 часа, 7 дена во неделата</span>
-              </div>
-            </li>
-            <li>
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#pin"></use></svg>
-              <div>
-                <strong data-i18n="contact.placeTitle">Локација</strong>
-                <span data-i18n="contact.placeText">Скопје, Северна Македонија</span>
-              </div>
-            </li>
-            <li>
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#chat"></use></svg>
-              <div>
-                <strong data-i18n="contact.appsTitle">Viber / WhatsApp</strong>
-                <span data-phone-intl>+389 70 123 456</span>
-              </div>
-            </li>
-          </ul>
+    <section class="section" id="patuvanja">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-i18n="trips.label">Меѓународни патувања</p>
+          <h2 data-i18n="trips.title">И подалеку.</h2>
+          <p class="section__lead" data-i18n="trips.lead">Од Македонија до соседната земја. Или малку подалеку.</p>
+        </div>
+      </div>
+      <figure class="road">
+        <div class="photo road__photo">
+          <img src="assets/images/international.jpg" alt="Автомобил на планински пат" data-i18n-alt="trips.alt" width="2400" height="1600" loading="lazy" />
+        </div>
+        <figcaption class="road__caption" data-i18n="trips.caption">Долг пат? Вие пуштете музика, ние возиме.</figcaption>
+      </figure>
+      <div class="container">
+        <div class="price-groups price-groups--abroad" id="abroad"></div>
+      </div>
+    </section>
 
-          <div class="contact__apps">
-            <a class="btn btn--outline btn--sm" href="viber://chat?number=%2B38970123456" data-link="viber">Viber</a>
-            <a class="btn btn--outline btn--sm" href="https://wa.me/38970123456" data-link="whatsapp"
-               target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="btn btn--outline btn--sm" href="sms:+38970123456" data-link="sms" data-i18n="cta.sms">СМС</a>
+    <section class="section section--white" id="prashanja">
+      <div class="container faq">
+        <div>
+          <p class="eyebrow" data-i18n="faq.label">Прашања</p>
+          <h2 data-i18n="faq.title">Често прашуваат.</h2>
+          <p class="section__lead faq__lead" data-i18n="faq.lead">Не го најдовте одговорот? <a data-call href="#kontakt">Јавете се.</a></p>
+        </div>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1"></button></h3>
+            <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1"></p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2"></button></h3>
+            <div class="faq__a" id="faq2" role="region"><div><p data-i18n="faq.a2"></p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3"></button></h3>
+            <div class="faq__a" id="faq3" role="region"><div><p data-i18n="faq.a3"></p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq4" data-i18n="faq.q4"></button></h3>
+            <div class="faq__a" id="faq4" role="region"><div><p data-i18n="faq.a4"></p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq5" data-i18n="faq.q5"></button></h3>
+            <div class="faq__a" id="faq5" role="region"><div><p data-i18n="faq.a5"></p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq6" data-i18n="faq.q6"></button></h3>
+            <div class="faq__a" id="faq6" role="region"><div><p data-i18n="faq.a6"></p></div></div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="request" id="request" data-reveal>
-          <h3 class="request__title" data-i18n="form.title">Побарај превоз</h3>
-          <p class="request__sub" data-i18n="form.sub">
-            Пополнете ги полињата и пратете ја пораката преку апликацијата што ја користите.
-            Не се чуваат податоци на овој сајт.
-          </p>
-
-          <form class="form" id="rideForm" novalidate>
-            <div class="field">
-              <label for="name" data-i18n="form.name">Име</label>
-              <input type="text" id="name" name="name" autocomplete="name"
-                     data-i18n-attr="placeholder:form.namePlaceholder"
-                     placeholder="Вашето име" required />
-              <p class="field__error" data-error-for="name"></p>
-            </div>
-
-            <div class="field">
-              <label for="phone" data-i18n="form.phone">Телефон</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel"
-                     data-i18n-attr="placeholder:form.phonePlaceholder"
-                     placeholder="07X XXX XXX" required />
-              <p class="field__error" data-error-for="phone"></p>
-            </div>
-
-            <div class="field">
-              <label for="from" data-i18n="form.from">Од локација</label>
-              <input type="text" id="from" name="from"
-                     data-i18n-attr="placeholder:form.fromPlaceholder"
-                     placeholder="ул. Македонија 12, Центар" required />
-              <p class="field__error" data-error-for="from"></p>
-            </div>
-
-            <div class="field">
-              <label for="to" data-i18n="form.to">До локација</label>
-              <input type="text" id="to" name="to"
-                     data-i18n-attr="placeholder:form.toPlaceholder"
-                     placeholder="Аеродром Скопје" required />
-              <p class="field__error" data-error-for="to"></p>
-            </div>
-
-            <div class="field">
-              <label for="when">
-                <span data-i18n="form.when">Кога</span>
-                <span class="field__opt" data-i18n="form.optional">(опционално)</span>
-              </label>
-              <input type="text" id="when" name="when"
-                     data-i18n-attr="placeholder:form.whenPlaceholder"
-                     placeholder="Веднаш / денес во 18:30" />
-            </div>
-
-            <div class="field field--full">
-              <label for="msg">
-                <span data-i18n="form.msg">Забелешка</span>
-                <span class="field__opt" data-i18n="form.optional">(опционално)</span>
-              </label>
-              <textarea id="msg" name="msg" rows="3"
-                        data-i18n-attr="placeholder:form.msgPlaceholder"
-                        placeholder="Багаж, број на патници, детско столче…"></textarea>
-            </div>
-
-            <button class="btn btn--primary btn--lg btn--block" type="submit">
-              <svg class="ic" aria-hidden="true"><use href="assets/icons/sprite.svg#send"></use></svg>
-              <span data-i18n="form.submit">Подготви го барањето</span>
-            </button>
-          </form>
-
-          <div class="request__result" id="formResult" hidden>
-            <div class="request__result-head">
-              <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#check-circle"></use></svg>
-              <div>
-                <strong data-i18n="form.resultTitle">Барањето е подготвено</strong>
-                <span data-i18n="form.resultSub">Изберете како да го испратите:</span>
-              </div>
-            </div>
-
-            <pre class="request__preview" id="msgPreview"></pre>
-
-            <div class="request__send">
-              <a class="btn btn--primary" id="sendViber" href="viber://chat?number=%2B38970123456"
-                 data-i18n="form.sendViber">Испрати преку Viber</a>
-              <a class="btn btn--dark" id="sendWhatsapp" href="https://wa.me/38970123456"
-                 target="_blank" rel="noopener noreferrer">WhatsApp</a>
-              <a class="btn btn--dark" id="sendSms" href="sms:+38970123456" data-i18n="cta.sms">СМС</a>
-              <button class="btn btn--outline" type="button" id="copyBtn" data-i18n="form.copy">Копирај текст</button>
-            </div>
-
-            <p class="request__hint">
-              <span data-i18n="form.hint">Најбрз одговор добивате ако директно се јавите на</span>
-              <a href="tel:+38970123456" data-call="main" data-phone>070 123 456</a>.
-            </p>
-          </div>
+    <section class="cta" id="kontakt">
+      <div class="container cta__inner">
+        <h2 class="cta__title" data-i18n="cta.title">Каде одиме?</h2>
+        <p class="lead" data-i18n="cta.lead">Само кажете.</p>
+        <div class="btn-row">
+          <a class="btn btn--blue btn--lg" data-call href="#kontakt" data-phone>+389 70 123 456</a>
+          <a class="btn btn--line btn--lg" data-viber href="#kontakt">Viber</a>
         </div>
-
+        <p class="trust" data-i18n="cta.trust"><span>Јасна цена</span><span>Проверени возачи</span><span>Од врата до врата</span></p>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer__inner">
-
+  <footer class="footer">
+    <div class="container footer__grid">
       <div class="footer__brand">
-        <a class="brand" href="#hero" data-i18n-attr="aria-label:a11y.brandHome" aria-label="Вардар Такси — почетна">
-          <span class="brand__mark" aria-hidden="true">
-            <svg class="ic"><use href="assets/icons/sprite.svg#taxi"></use></svg>
-          </span>
-          <span class="brand__text">
-            <strong data-i18n="brand.name">ВАРДАР</strong>
-            <span data-i18n="brand.word">ТАКСИ</span>
-          </span>
-        </a>
-        <p data-i18n="footer.about">
-          Професионален такси превоз во Скопје и околината. Достапни секој ден, 24 часа.
-        </p>
+        <a class="logo" href="#pocetna" data-site-name>Вардар Такси</a>
+        <p class="footer__tagline" data-i18n="footer.tagline">Ти кажи каде. Ние знаеме пат.</p>
+        <p class="plate plate--solid">SK · 24/7</p>
       </div>
-
-      <nav class="footer__nav" data-i18n-attr="aria-label:a11y.footerNav" aria-label="Подножје навигација">
-        <h3 data-i18n="footer.navTitle">Навигација</h3>
+      <nav class="footer__col" aria-labelledby="footerSite">
+        <p class="footer__title" id="footerSite" data-i18n="footer.site">Страница</p>
         <ul>
-          <li><a href="#about" data-i18n="nav.about">За нас</a></li>
-          <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
-          <li><a href="#pricing" data-i18n="nav.pricing">Цени</a></li>
-          <li><a href="#area" data-i18n="nav.area">Подрачје</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Контакт</a></li>
+          <li><a href="#ceni" data-i18n="nav.prices">Цени</a></li>
+          <li><a href="#vozaci" data-i18n="nav.drivers">Возачи</a></li>
+          <li><a href="#aerodrom" data-i18n="nav.airport">Аеродром</a></li>
+          <li><a href="#patuvanja" data-i18n="nav.trips">Меѓународни патувања</a></li>
+          <li><a href="#prashanja" data-i18n="nav.faq">Прашања</a></li>
         </ul>
       </nav>
-
-      <div class="footer__contact">
-        <h3 data-i18n="footer.contactTitle">Контакт</h3>
+      <div class="footer__col">
+        <p class="footer__title" data-i18n="footer.contact">Контакт</p>
         <ul>
-          <li><a href="tel:+38970123456" data-call="main" data-phone>070 123 456</a></li>
-          <li><a href="mailto:kontakt@vardartaksi.mk" data-email>kontakt@vardartaksi.mk</a></li>
-          <li data-i18n="footer.place">Скопје, Северна Македонија</li>
+          <li><a data-call href="#kontakt" data-phone>+389 70 123 456</a></li>
+          <li><a data-viber href="#kontakt">Viber</a></li>
+          <li class="muted" data-i18n="footer.hours">Секој ден, 0–24 ч.</li>
         </ul>
       </div>
-
+      <div class="footer__col">
+        <p class="footer__title" data-i18n="footer.areaTitle">Подрачје</p>
+        <ul>
+          <li class="muted" data-i18n="footer.area">Скопје и цела Македонија</li>
+          <li class="muted" data-i18n="footer.region">Косово, Грција, Бугарија, Албанија, Србија, Црна Гора</li>
+        </ul>
+      </div>
     </div>
-
     <div class="container footer__bottom">
-      <p>
-        © <span id="year">2026</span>
-        <span data-i18n="brand.full">Вардар Такси</span>.
-        <span data-i18n="footer.rights">Сите права задржани.</span>
-      </p>
+      <p>© <span id="year">2026</span> <span data-site-name>Вардар Такси</span>. <span data-i18n="footer.rights">Сите права задржани.</span></p>
+      <a class="footer__top" href="#pocetna" data-i18n="footer.top">Назад на врв ↑</a>
     </div>
   </footer>
 
-  <div class="call-bar" id="callBar" aria-hidden="true">
-    <a class="call-bar__main" href="tel:+38970123456" data-call="main" data-track="call-bar">
-      <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#phone"></use></svg>
-      <span>
-        <small data-i18n="contact.hoursShort">Достапни 24/7</small>
-        <strong>
-          <span data-i18n="cta.call">Јави се</span>
-          <span aria-hidden="true">—</span>
-          <span data-phone>070 123 456</span>
-        </strong>
-      </span>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+    <img class="lightbox__img" id="lightboxImg" alt="" />
+    <button class="lightbox__btn lightbox__close" id="lightboxClose" type="button" data-i18n-aria="lightbox.close" aria-label="Затвори">×</button>
+    <button class="lightbox__btn lightbox__prev" id="lightboxPrev" type="button" data-i18n-aria="lightbox.prev" aria-label="Претходна фотографија">←</button>
+    <button class="lightbox__btn lightbox__next" id="lightboxNext" type="button" data-i18n-aria="lightbox.next" aria-label="Следна фотографија">→</button>
+    <p class="lightbox__count" id="lightboxCount"></p>
+  </div>
+
+  <div class="mobile-bar">
+    <a class="btn btn--blue" data-call href="#kontakt">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      <span data-i18n="btn.call">Јави се</span>
     </a>
-    <a class="call-bar__alt" href="viber://chat?number=%2B38970123456" data-link="viber"
-       data-i18n-attr="aria-label:cta.viber" aria-label="Пиши на Viber">
-      <svg class="ic ic--md" aria-hidden="true"><use href="assets/icons/sprite.svg#chat"></use></svg>
+    <a class="btn btn--line" data-viber href="#kontakt">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.6 1.3 4.9 3.4 6.5L5 21.5l3.6-1.9c1.1.3 2.2.5 3.4.5 5.5 0 10-3.9 10-8.7S17.5 3 12 3z"/></svg>
+      <span>Viber</span>
     </a>
   </div>
 
-  <script src="js/config.js" defer></script>
-  <script src="js/i18n.js" defer></script>
-  <script src="js/script.js" defer></script>
+  <script src="js/prices.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
