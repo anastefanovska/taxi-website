@@ -21,7 +21,7 @@ window.TEXT = {
     'km':               'км',
 
     'hero.title':       'Ти кажи каде.<br>Ние знаеме <span class="marker">пат.</span>',
-    'hero.lead':        'Такси низ Скопје, Македонија и преку граница. Секој ден, 24/7.',
+    'hero.lead':        'Од Скопје до каде што треба — секој ден, 24/7.',
     'hero.alt':         'Насмеан возач и патничка во автомобил',
 
     'fare.title':       'Колку чини возењето?',
@@ -36,7 +36,7 @@ window.TEXT = {
 
     'prices.label':     'Цени',
     'prices.title':     'Од тука <span class="arrow">→</span> до таму.',
-    'prices.lead':      'Без погодување.',
+    'prices.lead':      'Цената ја знаете пред да седнете.',
     'prices.popular':   'Најбарани релации од Скопје',
     'prices.missing':   'Не ја гледате вашата релација? <a data-call href="#kontakt">Побарајте цена.</a>',
 
@@ -46,22 +46,19 @@ window.TEXT = {
 
     'drivers.label':    'Возачи',
     'drivers.title':    'Кој е зад воланот?',
-    'drivers.lead':     'Двајца возачи. Две коли. Тоа е приказната.',
-    'drivers.tabs':     'Изберете возач',
-    'drivers.photo':    'фотографија',
-    'quote.open':       '„',
-    'quote.close':      '“',
+    'drivers.lead':     'Различни лица. Исто добро возење.',
 
     'airport.label':    'Аеродром Скопје',
     'airport.from':     'Од Меѓународен Аеродром Скопје',
     'airport.title':    'Слетавте?<br>Ние веќе чекаме.',
-    'airport.lead':     'Од терминалот директно до вашата адреса.',
+    'airport.lead':     'Пратете ни го бројот на летот — ќе Ве чекаме пред терминалот.',
     'airport.alt':      'Автомобил пред аеродромски терминал',
 
     'trips.label':      'Меѓународни патувања',
-    'trips.from':       'Од Скопје',
-    'trips.title':      'И подалеку.',
-    'trips.lead':       'Од Македонија до соседните земји и подалеку.',
+    'trips.origin':     'Скопје',
+    'trips.pick':       'изберете град',
+    'trips.title':      'Границата не е крај на патот.',
+    'trips.lead':       'Фиксна цена до соседните градови.',
     'trips.caption':    'Долг пат? Вие пуштете музика.',
     'trips.alt':        'Автомобил на планински пат',
 
@@ -79,8 +76,9 @@ window.TEXT = {
 
     'cta.title':        'Каде одиме?',
     'cta.lead':         'Само кажете.',
-    'cta.trust':        '<span>Јасна цена</span><span>Проверени возачи</span><span>Од врата до врата</span>',
+    'cta.trust':        '<span>Фиксна цена</span><span>Проверени возачи</span><span>Од врата до врата</span>',
 
+    'footer.end':       'До следното возење.',
     'footer.top':       'Нагоре ↑'
   },
 
@@ -106,7 +104,7 @@ window.TEXT = {
     'km':               'km',
 
     'hero.title':       'You say where.<br>We know <span class="marker">the way.</span>',
-    'hero.lead':        'Taxi across Skopje, Macedonia and beyond. Every day, 24/7.',
+    'hero.lead':        'From Skopje to wherever you need — every day, 24/7.',
     'hero.alt':         'A smiling driver and a passenger in a car',
 
     'fare.title':       'How much is the ride?',
@@ -121,7 +119,7 @@ window.TEXT = {
 
     'prices.label':     'Prices',
     'prices.title':     'From here <span class="arrow">→</span> to there.',
-    'prices.lead':      'No guessing.',
+    'prices.lead':      'You know the price before you get in.',
     'prices.popular':   'Popular routes from Skopje',
     'prices.missing':   'Don’t see your route? <a data-call href="#kontakt">Ask for a price.</a>',
 
@@ -131,22 +129,19 @@ window.TEXT = {
 
     'drivers.label':    'Drivers',
     'drivers.title':    'Who’s behind the wheel?',
-    'drivers.lead':     'Two drivers. Two cars. That’s the story.',
-    'drivers.tabs':     'Choose a driver',
-    'drivers.photo':    'photo',
-    'quote.open':       '“',
-    'quote.close':      '”',
+    'drivers.lead':     'Different faces. The same good ride.',
 
     'airport.label':    'Skopje Airport',
     'airport.from':     'From Skopje International Airport',
     'airport.title':    'Landed?<br>We’re already waiting.',
-    'airport.lead':     'From the terminal straight to your address.',
+    'airport.lead':     'Send us your flight number — we’ll be waiting outside the terminal.',
     'airport.alt':      'A car outside an airport terminal',
 
     'trips.label':      'International trips',
-    'trips.from':       'From Skopje',
-    'trips.title':      'Even farther.',
-    'trips.lead':       'From Macedonia to neighboring countries and beyond.',
+    'trips.origin':     'Skopje',
+    'trips.pick':       'pick a city',
+    'trips.title':      'The border isn’t the end of the road.',
+    'trips.lead':       'Fixed prices to neighbouring cities.',
     'trips.caption':    'Long ride? You pick the music.',
     'trips.alt':        'A car on a mountain road',
 
@@ -164,8 +159,9 @@ window.TEXT = {
 
     'cta.title':        'Where are we going?',
     'cta.lead':         'Just tell us where.',
-    'cta.trust':        '<span>Clear price</span><span>Trusted drivers</span><span>Door to door</span>',
+    'cta.trust':        '<span>Fixed price</span><span>Trusted drivers</span><span>Door to door</span>',
 
+    'footer.end':       'Until the next ride.',
     'footer.top':       'Back to top ↑'
   }
 };
