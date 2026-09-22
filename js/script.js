@@ -306,7 +306,6 @@
           '<button class="route" type="button" data-to="' + route.to + '" aria-pressed="' + (route.to === tripKey) + '">' +
             '<span class="route__place">' +
               '<span class="route__city">' + esc(place(route.to)) + '</span>' +
-              '<span class="route__km">~' + route.km + ' ' + esc(t('km')) + '</span>' +
             '</span>' +
             routeFareHtml(route) +
           '</button>' +

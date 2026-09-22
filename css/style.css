@@ -867,7 +867,6 @@ h3 { font-size: 1.3rem; }
 .route[aria-pressed="true"]::before { border-color: var(--accent); background: var(--accent); }
 .route__place { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
 .route__city { font-size: 1.0625rem; font-weight: 600; }
-.route__km { color: var(--ink-2); font-size: 0.8125rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .route__fare { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: baseline; gap: 2px 8px; }
 .route__price { font-size: 1.3125rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; }
