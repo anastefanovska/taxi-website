@@ -599,11 +599,10 @@ h3 { font-size: 1.3rem; }
 }
 
 
-.drivers { display: grid; gap: 16px; }
+.drivers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 
 .driver {
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
   padding: 12px 12px 20px;
   border-radius: var(--radius);
   background: var(--panel);
@@ -611,9 +610,8 @@ h3 { font-size: 1.3rem; }
 
 .deck {
   position: relative;
-  aspect-ratio: 4 / 5;
-  max-height: 72vh;
-  max-height: 72svh;
+  height: 0;
+  padding-top: 66.667%; /* 3:2 — padding instead of aspect-ratio, which older iOS Safari mis-sizes */
   margin: 14px 14px 0;
   border-radius: 20px;
   cursor: zoom-in;
@@ -625,7 +623,7 @@ h3 { font-size: 1.3rem; }
 
 .deck__card {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 0;
   border-radius: 20px;
   box-shadow: 0 18px 36px -24px rgba(0, 0, 0, 0.5);
@@ -633,7 +631,7 @@ h3 { font-size: 1.3rem; }
   transform: scale(0.9);
   transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .45s;
 }
-.deck__card img { object-position: center 25%; -webkit-user-drag: none; }
+.deck__card img { object-position: center 35%; -webkit-user-drag: none; }
 .deck__card[data-pos="0"] { z-index: 3; opacity: 1; transform: none; }
 .deck__card[data-pos="1"] { z-index: 2; opacity: 1; transform: translate(12px, -10px) rotate(3deg) scale(0.96); }
 .deck__card[data-pos="2"] { z-index: 1; opacity: 1; transform: translate(-10px, -14px) rotate(-3deg) scale(0.93); }
@@ -697,9 +695,8 @@ h3 { font-size: 1.3rem; }
 .driver__specs svg { flex: none; width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (min-width: 820px) {
-  .drivers { grid-template-columns: 1fr 1fr; }
+  .drivers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .driver { padding: 14px 14px 24px; }
-  .deck { aspect-ratio: 4 / 3; max-height: none; }
   .driver__id { margin-inline: 10px; }
   .driver__specs { margin-inline: 10px; }
 }
@@ -782,7 +779,7 @@ h3 { font-size: 1.3rem; }
 }
 .trip__trail {
   position: absolute;
-  inset: 0 auto 0 0;
+  top: 0; bottom: 0; left: 0;
   width: calc(var(--pos) * 100%);
   border-radius: 3px;
   background: var(--accent);
@@ -962,8 +959,19 @@ h3 { font-size: 1.3rem; }
 .trust span + span::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 
 @media (max-width: 479px) {
-  .trust { flex-direction: column; gap: 4px; }
-  .trust span + span::before { display: none; }
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .trust span { flex-direction: column; justify-content: flex-start; gap: 8px; }
+  .trust span::before,
+  .trust span + span::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 }
 
 
@@ -972,6 +980,11 @@ h3 { font-size: 1.3rem; }
 .footer__end { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 500; }
 .footer__end::before { content: ''; width: 9px; height: 9px; border: 2px solid var(--ink); border-radius: 50%; background: var(--accent); }
 .footer__top { font-weight: 500; text-decoration: none; }
+
+@media (max-width: 559px) {
+  .footer__meta { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .footer__sep { display: none; }
+}
 .footer__top:hover { color: var(--ink); }
 
 
@@ -986,7 +999,7 @@ html.no-scroll { overflow: hidden; }
 
 .lightbox {
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 100;
   display: grid;
   place-items: center;
@@ -1000,6 +1013,7 @@ html.no-scroll { overflow: hidden; }
 
 .lightbox__img {
   width: auto;
+  max-width: calc(100vw - 32px);
   max-width: min(1400px, calc(100vw - 32px));
   max-height: calc(100vh - 144px);
   max-height: calc(100dvh - 144px);
@@ -1043,7 +1057,7 @@ html.no-scroll { overflow: hidden; }
 
 @media (min-width: 720px) {
   .lightbox { padding: 72px 96px; }
-  .lightbox__img { max-width: min(1400px, calc(100vw - 192px)); }
+  .lightbox__img { max-width: calc(100vw - 192px); max-width: min(1400px, calc(100vw - 192px)); }
   .lightbox__close { top: 20px; right: 20px; }
   .lightbox__prev, .lightbox__next { bottom: auto; top: calc(50% - 22px); }
   .lightbox__prev { left: 24px; }
