@@ -611,7 +611,9 @@ h3 { font-size: 1.3rem; }
 
 .deck {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
+  max-height: 72vh;
+  max-height: 72svh;
   margin: 14px 14px 0;
   border-radius: 20px;
   cursor: zoom-in;
@@ -631,7 +633,7 @@ h3 { font-size: 1.3rem; }
   transform: scale(0.9);
   transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .45s;
 }
-.deck__card img { object-position: center 35%; -webkit-user-drag: none; }
+.deck__card img { object-position: center 25%; -webkit-user-drag: none; }
 .deck__card[data-pos="0"] { z-index: 3; opacity: 1; transform: none; }
 .deck__card[data-pos="1"] { z-index: 2; opacity: 1; transform: translate(12px, -10px) rotate(3deg) scale(0.96); }
 .deck__card[data-pos="2"] { z-index: 1; opacity: 1; transform: translate(-10px, -14px) rotate(-3deg) scale(0.93); }
@@ -697,6 +699,7 @@ h3 { font-size: 1.3rem; }
 @media (min-width: 820px) {
   .drivers { grid-template-columns: 1fr 1fr; }
   .driver { padding: 14px 14px 24px; }
+  .deck { aspect-ratio: 4 / 3; max-height: none; }
   .driver__id { margin-inline: 10px; }
   .driver__specs { margin-inline: 10px; }
 }
