@@ -465,14 +465,14 @@
 
     showLightboxPhoto();
     lightbox.hidden = false;
-    document.body.classList.add('no-scroll');
+    document.documentElement.classList.add('no-scroll');
     requestAnimationFrame(function () { lightbox.classList.add('is-open'); });
     lightboxClose.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('is-open');
-    document.body.classList.remove('no-scroll');
+    document.documentElement.classList.remove('no-scroll');
     setTimeout(function () { lightbox.hidden = true; }, LIGHTBOX_DELAY);
     if (lightboxOpener) lightboxOpener.focus({ preventScroll: true });
   }

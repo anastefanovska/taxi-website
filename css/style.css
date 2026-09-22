@@ -33,6 +33,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 28px);
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -44,7 +47,11 @@ body {
   line-height: 1.5;
   letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
 }
+
+a, button, select, label { touch-action: manipulation; }
 
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
@@ -972,7 +979,8 @@ body.is-switching .footer,
 body.is-switching .nav,
 body.is-switching .header__actions .btn { opacity: 0; }
 
-body.no-scroll { overflow: hidden; }
+html.no-scroll { overflow: hidden; }
+.lightbox { overscroll-behavior: contain; }
 
 .lightbox {
   position: fixed;
