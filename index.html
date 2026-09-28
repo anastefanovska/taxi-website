@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Вардар Такси — Само кажи каде.</title>
-  <meta name="description" content="Такси низ Скопје, трансфери до Аеродром Скопје и меѓународни патувања. Јасни цени, двајца возачи." />
+  <meta name="description" content="Такси низ Скопје, трансфери до Меѓународен Аеродром Скопје и меѓународни патувања. Јасни цени, двајца возачи." />
   <meta name="theme-color" content="#F5F5F7" />
   <meta property="og:title" content="Вардар Такси" />
   <meta property="og:description" content="Само кажи каде." />
@@ -63,12 +63,14 @@
       <circle class="thread__head" id="threadHead" r="5" />
     </svg>
 
+    <div class="rail" id="rail" aria-hidden="true" hidden><span class="rail__fill" id="railFill"></span></div>
+
     <section class="hero" id="pocetna">
       <div class="hero__inner">
         <div class="hero__text">
           <p class="hero__here"><span class="hero__dot" data-thread></span><span data-i18n="hero.here">Скопје · 24/7</span></p>
-          <h1 data-reveal data-i18n="hero.title">Само кажи<br><span class="marker">каде.</span></h1>
-          <p class="lead hero__lead" data-reveal data-i18n="hero.lead">Низ Скопје, до аеродром и преку граница.</p>
+          <h1 data-reveal data-i18n="hero.title">Само кажи<br><span class="marker">КАДЕ.</span></h1>
+          <p class="lead hero__lead" data-reveal data-i18n="hero.lead">Такси низ Скопје, до аеродром и преку граница.</p>
           <div class="btn-row hero__actions" data-reveal>
             <a class="btn btn--go" data-call href="#kontakt">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
@@ -79,7 +81,7 @@
               <span>Viber</span>
             </a>
           </div>
-          <a class="hero__next" href="#vozaci" data-reveal><span data-i18n="hero.next">Видете кој е зад воланот</span><span class="hero__arrow" aria-hidden="true">↓</span></a>
+          <a class="hero__next" href="#vozaci" data-reveal><span data-i18n="hero.next">Колата е важна. Луѓето уште повеќе.</span><span class="hero__arrow" aria-hidden="true">↓</span></a>
         </div>
 
         <figure class="hero__photo photo">
@@ -93,7 +95,10 @@
     <section class="section" id="vozaci">
       <div class="container stage is-first" id="stage">
         <div class="stage__head">
-          <h2 data-reveal data-i18n="drivers.title">Кој е зад воланот?</h2>
+          <div class="stage__title" data-reveal>
+            <h2 data-stop data-i18n="drivers.title">Кој е зад воланот?</h2>
+            <p class="head__lead" data-i18n="drivers.lead">Двајца возачи. Две коли.</p>
+          </div>
           <div class="stage__names" id="driverNames" data-reveal role="group" data-i18n-aria="drivers.pick" aria-label="Изберете возач"></div>
         </div>
         <figure class="stage__car photo"><img id="carImg" alt="" width="1800" height="1200" loading="lazy" /></figure>
@@ -103,14 +108,15 @@
           <p class="stage__model" id="carModel"></p>
           <p class="stage__line" id="driverLine"></p>
         </div>
+        <div class="crew" id="crew"></div>
       </div>
     </section>
 
     <section class="section" id="ceni">
       <div class="container pricing">
         <div class="head" data-reveal>
-          <h2 data-i18n="prices.title">Од тука <span class="arrow">→</span> до таму.</h2>
-          <p class="head__lead" data-i18n="prices.lead">Трансфери до и од Аеродром Скопје.</p>
+          <h2 data-stop data-i18n="prices.title">Вие летате. Ние возиме.</h2>
+          <p class="head__lead" data-i18n="prices.lead">За каде и да тргнете, еве ја цената.</p>
         </div>
 
         <div class="pricing__body">
@@ -138,7 +144,7 @@
     <section class="section" id="turi">
       <div class="container local">
         <div class="head" data-reveal>
-          <h2 data-i18n="tours.title">Или само низ Скопје.</h2>
+          <h2 data-stop data-i18n="tours.title">Или само низ Скопје.</h2>
         </div>
         <ul class="tours" id="tours" data-reveal></ul>
       </div>
@@ -147,8 +153,8 @@
     <section class="section" id="patuvanja">
       <div class="container trips">
         <div class="head" data-reveal>
-          <h2 data-i18n="trips.title">Меѓународни патувања</h2>
-          <p class="head__lead" data-i18n="trips.lead">И подалеку.</p>
+          <p class="head__kicker" data-i18n="trips.kicker">А кога патот станува подолг?</p>
+          <h2 data-stop data-i18n="trips.title">Меѓународни патувања</h2>
         </div>
 
         <figure class="trips__photo photo">
@@ -178,24 +184,25 @@
         </div>
 
         <ul class="trips__list" id="abroad"></ul>
+
       </div>
     </section>
 
     <section class="section section--tight" id="prashanja">
       <div class="container faq">
-        <h2 class="faq__title" data-reveal data-i18n="faq.title">Пред да тргнеме.</h2>
+        <h2 class="faq__title" data-stop data-reveal data-i18n="faq.title">Пред да тргнеме.</h2>
         <div class="faq__list" data-reveal>
           <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1">Како да закажам возење?</button></h3>
-            <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1">Јавете се или пишете ни на Viber. Кажете од каде, до каде и кога — ние го договараме останатото.</p></div></div>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1">Како да закажам?</button></h3>
+            <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1">Јавете се или пишете ни на Viber: од каде, до каде и кога.</p></div></div>
           </div>
           <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2">Не ја гледате вашата релација?</button></h3>
-            <div class="faq__a" id="faq2" role="region"><div><p data-i18n="faq.a2">Јавете се или пишете ни и ќе Ви кажеме цена.</p></div></div>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2">Ја нема вашата релација?</button></h3>
+            <div class="faq__a" id="faq2" role="region"><div><p data-i18n="faq.a2">Пишете ни — ќе Ви кажеме цена.</p></div></div>
           </div>
           <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Дали возите надвор од Македонија?</button></h3>
-            <div class="faq__a" id="faq3" role="region"><div><p data-i18n="faq.a3">Да — до 13 дестинации, од Приштина до Загреб. Цените се во Меѓународни патувања.</p></div></div>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Слетувате во Скопје?</button></h3>
+            <div class="faq__a" id="faq3" role="region"><div><p data-i18n="faq.a3">Пратете ни го бројот на летот. Ќе знаеме кога да Ве чекаме.</p></div></div>
           </div>
         </div>
       </div>
@@ -204,7 +211,6 @@
     <section class="section depart" id="kontakt">
       <div class="container">
         <h2 class="depart__title" data-reveal="fade" data-thread-end data-i18n="cta.title">Каде одиме?</h2>
-        <p class="lead" data-reveal data-i18n="cta.lead">Тргнуваме.</p>
         <div class="btn-row depart__actions" data-reveal>
           <a class="btn btn--go btn--lg" data-call href="#kontakt">
             <span class="btn__label" data-i18n="btn.call">Јави се</span>
@@ -222,17 +228,11 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__name" data-site-name>Вардар Такси</p>
-      <p class="footer__contact">
-        <a data-call href="#kontakt" data-phone>+389 70 123 456</a>
-        <a data-viber href="#kontakt">Viber</a>
-      </p>
-      <nav class="footer__nav" data-i18n-aria="footer.nav" aria-label="Навигација">
-        <a href="#vozaci" data-i18n="nav.drivers">Возачи</a>
-        <a href="#ceni" data-i18n="nav.prices">Цени</a>
-        <a href="#patuvanja" data-i18n="nav.trips">Меѓународни патувања</a>
-      </nav>
-      <p class="footer__meta">© <span id="year">2026</span> <span data-site-name>Вардар Такси</span></p>
+      <div class="footer__left">
+        <p class="footer__end" data-i18n="footer.end">До следното возење.</p>
+        <p class="footer__meta">© <span id="year">2026</span> <span data-site-name>Вардар Такси</span></p>
+      </div>
+      <a class="footer__top" href="#pocetna" data-i18n="footer.top">Нагоре ↑</a>
     </div>
   </footer>
 

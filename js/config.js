@@ -18,7 +18,7 @@ window.SITE = {
     },
     {
       name:  ['Марко', 'Marko'],
-      line:  ['За град, аеродром или подолг пат.', 'For the city, the airport or a longer road.'],
+      line:  ['Го знае Скопје улица по улица.', 'Knows Skopje street by street.'],
       photo: 'assets/images/drivers/marko.jpg',
       focus: '62% 30%',
       car: {

@@ -3,7 +3,7 @@ window.PRICES = {
 
   places: {
     skopje:          ['Скопје', 'Skopje'],
-    airport:         ['Аеродром Скопје', 'Skopje Airport'],
+    airport:         ['Меѓународен Аеродром Скопје', 'Skopje International Airport'],
     kumanovo:        ['Куманово', 'Kumanovo'],
     tetovo:          ['Тетово', 'Tetovo'],
     veles:           ['Велес', 'Veles'],
@@ -11,11 +11,11 @@ window.PRICES = {
     ohrid:           ['Охрид', 'Ohrid'],
     matka:           ['Матка', 'Matka'],
     pristina:        ['Приштина', 'Pristina'],
-    pristinaAirport: ['Аеродром Приштина', 'Pristina Airport'],
+    pristinaAirport: ['Меѓународен Аеродром Приштина', 'Pristina International Airport'],
     nis:             ['Ниш', 'Nis'],
     thessaloniki:    ['Солун', 'Thessaloniki'],
     sofia:           ['Софија', 'Sofia'],
-    sofiaAirport:    ['Аеродром Софија', 'Sofia Airport'],
+    sofiaAirport:    ['Меѓународен Аеродром Софија', 'Sofia International Airport'],
     tirana:          ['Тирана', 'Tirana'],
     podgorica:       ['Подгорица', 'Podgorica'],
     budva:           ['Будва', 'Budva'],
