@@ -6,31 +6,25 @@ window.SITE = {
 
   drivers: [
     {
-      name:   ['Дарко', 'Darko'],
-      photos: ['assets/images/drivers/darko.jpg', 'assets/images/drivers/darko-02.jpg', 'assets/images/drivers/darko-03.jpg'],
+      name:  ['Дарко', 'Darko'],
+      line:  ['Смирено возење. Добар разговор.', 'Calm driving. Good conversation.'],
+      photo: 'assets/images/drivers/darko.jpg',
+      focus: '82% 35%',
       car: {
-        model:    'Škoda Octavia',
-        plate:    'SK 4821 VT',
-        photos:   ['assets/images/cars/car-darko.jpg'],
-        features: [
-          { icon: 'seats', text: ['4 патници', '4 passengers'] },
-          { icon: 'bags',  text: ['2–3 куфери', '2–3 bags'] },
-          { icon: 'ac',    text: ['Клима', 'Air conditioning'] }
-        ]
+        model: 'Škoda Octavia',
+        photo: 'assets/images/cars/car-darko.jpg',
+        focus: '75% 55%'
       }
     },
     {
-      name:   ['Марко', 'Marko'],
-      photos: ['assets/images/drivers/marko.jpg', 'assets/images/drivers/marko-02.jpg', 'assets/images/drivers/marko-03.jpg'],
+      name:  ['Марко', 'Marko'],
+      line:  ['За град, аеродром или подолг пат.', 'For the city, the airport or a longer road.'],
+      photo: 'assets/images/drivers/marko.jpg',
+      focus: '62% 30%',
       car: {
-        model:    'Škoda Octavia',
-        plate:    'SK 7390 VT',
-        photos:   ['assets/images/cars/car-marko.jpg'],
-        features: [
-          { icon: 'seats', text: ['4 патници', '4 passengers'] },
-          { icon: 'bags',  text: ['2–3 куфери', '2–3 bags'] },
-          { icon: 'ac',    text: ['Клима', 'Air conditioning'] }
-        ]
+        model: 'Škoda Octavia',
+        photo: 'assets/images/cars/car-marko.jpg',
+        focus: '50% 60%'
       }
     }
   ]
