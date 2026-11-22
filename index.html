@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Вардар Такси — Само кажи каде.</title>
+  <title>Prestige Transport — Само кажи каде.</title>
   <meta name="description" content="Такси низ Скопје, трансфери до Меѓународен Аеродром Скопје и меѓународни патувања. Јасни цени, двајца возачи." />
   <meta name="theme-color" content="#F5F5F7" />
-  <meta property="og:title" content="Вардар Такси" />
+  <meta property="og:title" content="Prestige Transport" />
+  <meta property="og:site_name" content="Prestige Transport" />
   <meta property="og:description" content="Само кажи каде." />
   <meta property="og:image" content="assets/images/hero.jpg" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
@@ -21,8 +22,8 @@
 
   <header class="header" id="header">
     <div class="container header__inner">
-      <a class="brand" href="#pocetna" data-i18n-aria="brand.home" aria-label="Вардар Такси — почетна">
-        <span class="brand__name" aria-hidden="true" data-brand>Вардар<span>Такси</span></span>
+      <a class="brand" href="#pocetna" data-i18n-aria="brand.home" aria-label="Prestige Transport — почетна">
+        <span class="brand__name" aria-hidden="true" data-brand>Prestige<span>Transport</span></span>
       </a>
 
       <nav class="nav" id="nav">
@@ -38,13 +39,13 @@
       </nav>
 
       <div class="header__actions">
-        <a class="btn btn--go btn--sm header__btn" data-call href="#kontakt" data-call-label aria-label="Јави се +389 70 123 456">
+        <button class="btn btn--go btn--sm header__btn" type="button" data-call>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-          <span class="header__btn-text" data-phone>+389 70 123 456</span>
-        </a>
-        <a class="btn btn--light btn--sm header__btn" data-viber href="#kontakt">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.2c-2.9 0-5.3.4-6.9 1.8C3.6 5.3 3 7.3 3 10.4c0 3 .6 5 2.1 6.3.5.4 1 .7 1.6 1v3.1c0 .6.7.9 1.2.5l2.8-2.5h1.3c2.9 0 5.3-.4 6.9-1.8 1.5-1.3 2.1-3.3 2.1-6.6 0-3.1-.6-5.1-2.1-6.4C17.3 2.6 14.9 2.2 12 2.2zm0 1.7c2.8 0 4.6.4 5.8 1.4 1 .9 1.5 2.4 1.5 5.1 0 2.8-.5 4.4-1.5 5.3-1.2 1-3 1.4-5.8 1.4h-2l-1.8 1.6v-2l-.6-.2c-.6-.2-1.1-.5-1.5-.8-1-.9-1.5-2.4-1.5-5.3 0-2.7.5-4.2 1.5-5.1C7.4 4.3 9.2 3.9 12 3.9z"/><path d="M9 7.1c.3-.2.7-.2.9.1l1 1.4c.2.3.2.7-.1 1l-.5.4c.4 1 1.2 1.9 2.2 2.3l.4-.5c.3-.3.7-.3 1-.1l1.4 1c.3.2.4.6.1.9l-.4.6c-.5.6-1.3.8-2 .5-2-.8-3.6-2.4-4.4-4.4-.3-.7-.1-1.5.5-2zM12.9 6.4a.6.6 0 0 1 .6-.6 4 4 0 0 1 3.9 3.9.6.6 0 0 1-1.2 0 2.8 2.8 0 0 0-2.7-2.7.6.6 0 0 1-.6-.6zm.4 1.8a.6.6 0 0 1 .7-.5 2 2 0 0 1 1.7 1.7.6.6 0 1 1-1.2.2.8.8 0 0 0-.7-.7.6.6 0 0 1-.5-.7z"/></svg>
-          <span class="header__btn-text">Viber</span>
+          <span class="header__btn-text" data-i18n="btn.call">Јави се</span>
+        </button>
+        <a class="btn btn--light btn--sm header__btn" data-whatsapp href="#kontakt" target="_blank" rel="noopener">
+          <svg class="wa-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg>
+          <span class="header__btn-text">WhatsApp</span>
         </a>
         <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">
           <span class="menu-btn__lines" aria-hidden="true"></span>
@@ -71,22 +72,12 @@
           <p class="hero__here"><span class="hero__dot" data-thread></span><span data-i18n="hero.here">Скопје · 24/7</span></p>
           <h1 data-reveal data-i18n="hero.title">Само кажи<br><span class="marker">КАДЕ.</span></h1>
           <p class="lead hero__lead" data-reveal data-i18n="hero.lead">Такси низ Скопје, до аеродром и преку граница.</p>
-          <div class="btn-row hero__actions" data-reveal>
-            <a class="btn btn--go" data-call href="#kontakt">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-              <span data-phone>+389 70 123 456</span>
-            </a>
-            <a class="btn btn--light" data-viber href="#kontakt">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.2c-2.9 0-5.3.4-6.9 1.8C3.6 5.3 3 7.3 3 10.4c0 3 .6 5 2.1 6.3.5.4 1 .7 1.6 1v3.1c0 .6.7.9 1.2.5l2.8-2.5h1.3c2.9 0 5.3-.4 6.9-1.8 1.5-1.3 2.1-3.3 2.1-6.6 0-3.1-.6-5.1-2.1-6.4C17.3 2.6 14.9 2.2 12 2.2zm0 1.7c2.8 0 4.6.4 5.8 1.4 1 .9 1.5 2.4 1.5 5.1 0 2.8-.5 4.4-1.5 5.3-1.2 1-3 1.4-5.8 1.4h-2l-1.8 1.6v-2l-.6-.2c-.6-.2-1.1-.5-1.5-.8-1-.9-1.5-2.4-1.5-5.3 0-2.7.5-4.2 1.5-5.1C7.4 4.3 9.2 3.9 12 3.9z"/><path d="M9 7.1c.3-.2.7-.2.9.1l1 1.4c.2.3.2.7-.1 1l-.5.4c.4 1 1.2 1.9 2.2 2.3l.4-.5c.3-.3.7-.3 1-.1l1.4 1c.3.2.4.6.1.9l-.4.6c-.5.6-1.3.8-2 .5-2-.8-3.6-2.4-4.4-4.4-.3-.7-.1-1.5.5-2zM12.9 6.4a.6.6 0 0 1 .6-.6 4 4 0 0 1 3.9 3.9.6.6 0 0 1-1.2 0 2.8 2.8 0 0 0-2.7-2.7.6.6 0 0 1-.6-.6zm.4 1.8a.6.6 0 0 1 .7-.5 2 2 0 0 1 1.7 1.7.6.6 0 1 1-1.2.2.8.8 0 0 0-.7-.7.6.6 0 0 1-.5-.7z"/></svg>
-              <span>Viber</span>
-            </a>
-          </div>
           <a class="hero__next" href="#vozaci" data-reveal><span data-i18n="hero.next">Колата е важна. Луѓето уште повеќе.</span><span class="hero__arrow" aria-hidden="true">↓</span></a>
         </div>
 
         <figure class="hero__photo photo">
           <div class="hero__zoom">
-            <img src="assets/images/hero.jpg" data-parallax alt="Насмеан возач и патничка во автомобил" data-i18n-alt="hero.alt" width="1800" height="1201" fetchpriority="high" />
+            <img src="assets/images/hero.webp" srcset="assets/images/hero-800.webp 800w, assets/images/hero.webp 1600w" sizes="(min-width: 900px) 52vw, 100vw" data-parallax alt="Насмеан возач и патничка во автомобил" data-i18n-alt="hero.alt" width="1600" height="1068" fetchpriority="high" />
           </div>
         </figure>
       </div>
@@ -158,7 +149,7 @@
         </div>
 
         <figure class="trips__photo photo">
-          <img src="assets/images/international.jpg" data-parallax alt="Автомобил на планински пат" data-i18n-alt="trips.alt" width="2400" height="1600" loading="lazy" />
+          <img src="assets/images/international.webp" srcset="assets/images/international-800.webp 800w, assets/images/international.webp 2000w" sizes="(min-width: 1180px) 1120px, 100vw" data-parallax alt="Автомобил на планински пат" data-i18n-alt="trips.alt" width="2000" height="1333" loading="lazy" />
         </figure>
 
         <div class="journey" id="journey" aria-live="polite">
@@ -194,7 +185,7 @@
         <div class="faq__list" data-reveal>
           <div class="faq__item">
             <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1">Како да закажам?</button></h3>
-            <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1">Јавете се или пишете ни на Viber: од каде, до каде и кога.</p></div></div>
+            <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1">Јавете се или пишете ни на WhatsApp: од каде, до каде и кога.</p></div></div>
           </div>
           <div class="faq__item">
             <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2">Ја нема вашата релација?</button></h3>
@@ -204,6 +195,14 @@
             <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Слетувате во Скопје?</button></h3>
             <div class="faq__a" id="faq3" role="region"><div><p data-i18n="faq.a3">Пратете ни го бројот на летот. Ќе знаеме кога да Ве чекаме.</p></div></div>
           </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq4" data-i18n="faq.q4">Имате детско седиште?</button></h3>
+            <div class="faq__a" id="faq4" role="region"><div><p data-i18n="faq.a4">Да. Кажете ни при закажувањето.</p></div></div>
+          </div>
+          <div class="faq__item">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq5" data-i18n="faq.q5">Може ли миленичиња?</button></h3>
+            <div class="faq__a" id="faq5" role="region"><div><p data-i18n="faq.a5">Да, до 5 кг во транспортер.</p></div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -211,16 +210,20 @@
     <section class="section depart" id="kontakt">
       <div class="container">
         <h2 class="depart__title" data-reveal="fade" data-thread-end data-i18n="cta.title">Каде одиме?</h2>
-        <div class="btn-row depart__actions" data-reveal>
-          <a class="btn btn--go btn--lg" data-call href="#kontakt">
-            <span class="btn__label" data-i18n="btn.call">Јави се</span>
-            <span data-phone>+389 70 123 456</span>
-          </a>
-          <a class="btn btn--light btn--lg" data-viber href="#kontakt">
-            <span class="btn__label">Viber</span>
-            <span data-i18n="btn.message">Пишете ни</span>
+        <div class="depart__actions" data-reveal>
+          <button class="btn btn--go btn--lg" type="button" data-call>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+            <span data-i18n="btn.call">Јави се</span>
+          </button>
+          <a class="btn btn--light btn--lg" data-whatsapp href="#kontakt" target="_blank" rel="noopener">
+            <svg class="wa-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg>
+            <span>WhatsApp</span>
           </a>
         </div>
+        <a class="follow" data-instagram href="#kontakt" target="_blank" rel="noopener" data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="social.follow">Следете нѐ на Instagram</span>
+        </a>
       </div>
     </section>
 
@@ -230,11 +233,21 @@
     <div class="container footer__inner">
       <div class="footer__left">
         <p class="footer__end" data-i18n="footer.end">До следното возење.</p>
-        <p class="footer__meta">© <span id="year">2026</span> <span data-site-name>Вардар Такси</span></p>
+        <p class="footer__meta">© <span id="year">2026</span> <span data-site-name>Prestige Transport</span></p>
       </div>
       <a class="footer__top" href="#pocetna" data-i18n="footer.top">Нагоре ↑</a>
     </div>
   </footer>
+
+  <dialog class="dial" id="dial" aria-labelledby="dialTitle">
+    <div class="dial__sheet">
+      <span class="dial__grip" aria-hidden="true"></span>
+      <h2 class="dial__title" id="dialTitle" data-i18n="dial.title">На кого да се јавите?</h2>
+      <p class="dial__lead" id="dialLead"></p>
+      <ul class="dial__list" id="dialList"></ul>
+      <button class="dial__close" type="button" data-dial-close data-i18n="dial.close">Откажи</button>
+    </div>
+  </dialog>
 
   <script src="js/prices.js"></script>
   <script src="js/config.js"></script>

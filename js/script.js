@@ -63,6 +63,14 @@
   var driverName = document.getElementById('driverName');
   var driverLine = document.getElementById('driverLine');
   var crew = document.getElementById('crew');
+  var dial = document.getElementById('dial');
+  var dialList = document.getElementById('dialList');
+  var dialLead = document.getElementById('dialLead');
+
+  var isPhone = window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+    /Android|iPhone|iPod|Mobi/i.test(navigator.userAgent);
+
+  var dialOrder = SITE.drivers.map(function (_, i) { return i; });
 
   var journey = document.getElementById('journey');
   var track = document.getElementById('track');
@@ -304,6 +312,53 @@
       fillDriver();
       requestAnimationFrame(function () { stage.classList.remove('is-swapping'); });
     });
+  }
+
+  var PHONE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>';
+
+  function fill(template, name) {
+    return template.replace('{name}', name);
+  }
+
+  function dialLabel(driver) {
+    return fill(t('dial.call'), pick(driver.name)) + ' ' + driver.phone.display;
+  }
+
+  function renderDial() {
+    dialLead.textContent = isPhone ? '' : t('dial.lead.desk');
+    dialLead.hidden = isPhone;
+    dial.classList.toggle('is-phone', isPhone);
+    dialList.innerHTML = dialOrder.map(function (i) {
+      var driver = SITE.drivers[i];
+      var name = pick(driver.name);
+      var inner =
+        '<span class="dial__initial" aria-hidden="true">' + esc(name.charAt(0)) + '</span>' +
+        '<span class="dial__who"><span class="dial__name">' + esc(name) + '</span>' +
+        '<span class="dial__num">' + esc(driver.phone.display) + '</span></span>';
+      if (!isPhone) return '<li><div class="dial__row dial__row--info">' + inner + '</div></li>';
+      return (
+        '<li><a class="dial__row" href="tel:' + esc(driver.phone.number) + '" data-dial="' + i + '" aria-label="' + esc(dialLabel(driver)) + '">' +
+          inner +
+          '<span class="dial__go" aria-hidden="true">' + PHONE_ICON + '</span>' +
+        '</a></li>'
+      );
+    }).join('');
+  }
+
+  function openDial() {
+    renderDial();
+    if (typeof dial.showModal === 'function') dial.showModal();
+    else dial.setAttribute('open', '');
+    document.documentElement.classList.add('has-dial');
+  }
+
+  function closeDial() {
+    if (!dial.open) return;
+    if (typeof dial.close === 'function') dial.close();
+    else {
+      dial.removeAttribute('open');
+      document.documentElement.classList.remove('has-dial');
+    }
   }
 
   function renderCrew() {
@@ -744,11 +799,12 @@
   }
 
   function bindContacts() {
-    var viberUrl = 'viber://chat?number=' + encodeURIComponent(SITE.viberNumber);
-    document.querySelectorAll('[data-call]').forEach(function (el) { el.href = 'tel:' + SITE.phoneNumber; });
-    document.querySelectorAll('[data-viber]').forEach(function (el) { el.href = viberUrl; });
-    document.querySelectorAll('[data-phone]').forEach(function (el) { el.textContent = SITE.phoneDisplay; });
-    document.querySelectorAll('[data-call-label]').forEach(function (el) { el.setAttribute('aria-label', t('btn.call') + ' ' + SITE.phoneDisplay); });
+    var waUrl = 'https://wa.me/' + SITE.whatsapp.number;
+    var insta = SITE.social.instagram;
+    document.querySelectorAll('[data-whatsapp]').forEach(function (el) { el.href = waUrl; });
+    document.querySelectorAll('[data-call]').forEach(function (el) { el.setAttribute('aria-haspopup', 'dialog'); });
+    document.querySelectorAll('[data-instagram]').forEach(function (el) { el.href = insta.url; });
+    if (dial.open) renderDial();
   }
 
   function render() {
@@ -858,6 +914,26 @@
     var button = e.target.closest('.trip');
     if (!button) return;
     if (wide.matches) pickTrip(button.dataset.to);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-call]')) {
+      e.preventDefault();
+      closeMenu();
+      openDial();
+      return;
+    }
+    if (e.target.closest('[data-dial-close]')) {
+      closeDial();
+      return;
+    }
+    if (e.target.closest('[data-dial]')) setTimeout(closeDial, 400);
+  });
+  dial.addEventListener('click', function (e) {
+    if (e.target === dial) closeDial();
+  });
+  dial.addEventListener('close', function () {
+    document.documentElement.classList.remove('has-dial');
   });
 
   document.querySelectorAll('.faq__q').forEach(function (button) {

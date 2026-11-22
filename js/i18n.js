@@ -1,10 +1,10 @@
 window.TEXT = {
   mk: {
-    'meta.title':       'Вардар Такси — Само кажи каде.',
+    'meta.title':       'Prestige Transport — Само кажи каде.',
     'skip':             'Прескокни до содржината',
     'lang.label':       'Јазик',
     'menu':             'Мени',
-    'brand.home':       'Вардар Такси — почетна',
+    'brand.home':       'Prestige Transport — почетна',
 
     'nav.home':         'Почетна',
     'nav.drivers':      'Возачи',
@@ -14,6 +14,12 @@ window.TEXT = {
 
     'btn.call':         'Јави се',
     'btn.message':      'Пишете ни',
+    'social.follow':    'Следете нѐ на Instagram',
+
+    'dial.title':       'На кого да се јавите?',
+    'dial.lead.desk':   'Повикајте од телефон на еден од броевите.',
+    'dial.call':        'Јави се на {name}',
+    'dial.close':       'Откажи',
     'km':               'км',
 
     'hero.here':        'Скопје · 24/7',
@@ -42,11 +48,15 @@ window.TEXT = {
 
     'faq.title':        'Пред да тргнеме.',
     'faq.q1':           'Како да закажам?',
-    'faq.a1':           'Јавете се или пишете ни на Viber: од каде, до каде и кога.',
+    'faq.a1':           'Јавете се или пишете ни на WhatsApp: од каде, до каде и кога.',
     'faq.q2':           'Ја нема вашата релација?',
     'faq.a2':           'Пишете ни — ќе Ви кажеме цена.',
     'faq.q3':           'Слетувате во Скопје?',
     'faq.a3':           'Пратете ни го бројот на летот. Ќе знаеме кога да Ве чекаме.',
+    'faq.q4':           'Имате детско седиште?',
+    'faq.a4':           'Да. Кажете ни при закажувањето.',
+    'faq.q5':           'Може ли миленичиња?',
+    'faq.a5':           'Да, до 5 кг во транспортер.',
 
     'cta.title':        'Каде одиме?',
 
@@ -55,11 +65,11 @@ window.TEXT = {
   },
 
   en: {
-    'meta.title':       'Vardar Taxi — Just say where.',
+    'meta.title':       'Prestige Transport — Just say where.',
     'skip':             'Skip to content',
     'lang.label':       'Language',
     'menu':             'Menu',
-    'brand.home':       'Vardar Taxi — home',
+    'brand.home':       'Prestige Transport — home',
 
     'nav.home':         'Home',
     'nav.drivers':      'Drivers',
@@ -69,6 +79,12 @@ window.TEXT = {
 
     'btn.call':         'Call',
     'btn.message':      'Message us',
+    'social.follow':    'Follow us on Instagram',
+
+    'dial.title':       'Who would you like to call?',
+    'dial.lead.desk':   'Call either number from your phone.',
+    'dial.call':        'Call {name}',
+    'dial.close':       'Cancel',
     'km':               'km',
 
     'hero.here':        'Skopje · 24/7',
@@ -97,11 +113,15 @@ window.TEXT = {
 
     'faq.title':        'Before we set off.',
     'faq.q1':           'How do I book?',
-    'faq.a1':           'Call or message us on Viber: where from, where to and when.',
+    'faq.a1':           'Call or message us on WhatsApp: where from, where to and when.',
     'faq.q2':           'Your route’s not listed?',
     'faq.a2':           'Message us — we’ll give you a price.',
     'faq.q3':           'Flying into Skopje?',
     'faq.a3':           'Send us your flight number. We’ll know when to be there.',
+    'faq.q4':           'Do you have a child seat?',
+    'faq.a4':           'Yes. Just tell us when you book.',
+    'faq.q5':           'Can I bring a pet?',
+    'faq.a5':           'Yes, up to 5 kg in a carrier.',
 
     'cta.title':        'Where are we going?',
 
