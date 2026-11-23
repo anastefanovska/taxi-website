@@ -380,7 +380,6 @@ main > section { position: relative; z-index: 1; }
 }
 .rail.is-done::after { border-color: var(--accent); background: var(--accent); }
 
-.crew,
 .trips__head,
 .trips__label { display: none; }
 
@@ -414,15 +413,27 @@ main > section { position: relative; z-index: 1; }
 .hero__inner { display: flex; flex-direction: column; }
 .hero__photo {
   aspect-ratio: 3 / 2;
-  margin: 30px 0 0 var(--gutter);
-  border-radius: var(--radius) 0 0 var(--radius);
+  margin: 18px 0 0;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0, #000 16%, #000 80%, transparent 100%),
+    linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, transparent 0, #000 16%, #000 80%, transparent 100%),
+    linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-composite: intersect;
 }
-.hero__zoom { height: 100%; animation: settle 2.4s var(--ease) both; }
-.hero__zoom img { object-position: 62% 40%; will-change: transform; }
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 70%;
+  animation: arrive 1.6s var(--ease) both .15s;
+}
 
-@keyframes settle {
-  from { transform: scale(1.1); }
-  to { transform: none; }
+@keyframes arrive {
+  from { opacity: 0; transform: translateX(9%); }
+  to { opacity: 1; transform: none; }
 }
 
 .hero__text { padding: 32px var(--gutter) 0; }
@@ -486,9 +497,8 @@ main > section { position: relative; z-index: 1; }
   .hero h1 { margin: 22px 0 22px; font-size: clamp(4.25rem, 6.4vw, 6.25rem); }
   .hero__photo {
     grid-column: 3;
-    aspect-ratio: auto;
-    margin: 0 0 0 48px;
-    border-radius: 0 0 0 var(--radius-lg);
+    align-self: center;
+    margin: calc(var(--header-h) + 40px) 0 0 16px;
   }
 }
 
@@ -627,152 +637,91 @@ main > section { position: relative; z-index: 1; }
 }
 
 
-.stage {
-  display: grid;
-  --step: 60ms;
-}
-.stage.is-first { --step: 170ms; }
-
+.stage { display: grid; }
 .stage__head { margin-bottom: 24px; }
-.stage__names { display: flex; gap: 10px; margin-top: 20px; }
-.chip {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-  padding: 6px 18px 6px 6px;
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink-2);
-  font: inherit;
-  font-size: var(--text-md);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .25s, background-color .25s, color .25s, box-shadow .25s;
-}
-.chip:hover { border-color: #C2C2C8; color: var(--ink); }
-.chip[aria-pressed="true"] {
-  border-color: var(--accent);
-  background: var(--panel);
-  color: var(--ink);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-  cursor: default;
-}
-.chip__photo {
-  flex: none;
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  object-fit: cover;
-  filter: grayscale(1);
-  opacity: 0.7;
-  transition: filter .25s, opacity .25s;
-}
-.chip[aria-pressed="true"] .chip__photo,
-.chip:hover .chip__photo { filter: none; opacity: 1; }
-.chip__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .stage__car {
   aspect-ratio: 3 / 2;
-  margin-inline: 0 calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
   border-radius: var(--radius) 0 0 var(--radius);
 }
-.stage__portrait {
-  position: relative;
-  z-index: 2;
-  width: 58%;
-  aspect-ratio: 3 / 2;
-  margin-top: -18%;
-  margin-left: 14px;
-  border-radius: 18px;
-  box-shadow: 0 0 0 6px var(--bg), 0 24px 40px -26px rgba(0, 0, 0, 0.6);
+.stage__car img {
+  object-position: 42% 62%;
+  transition: transform 1.4s var(--ease), opacity .7s var(--ease);
 }
-.stage__info { margin-top: 22px; }
+.stage.is-waiting .stage__car img { opacity: 0; transform: translateX(12%) scale(1.04); }
 
-.stage__who {
-  font-size: clamp(2.25rem, 10vw, 3.5rem);
+.stage__info { margin-top: 20px; }
+.stage__model {
+  font-size: clamp(1.75rem, 7.6vw, 2.5rem);
   font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
 }
-.stage__model { margin-top: 8px; color: var(--ink-2); font-size: var(--text-body); font-weight: 500; }
-.stage__line {
-  margin-top: 14px;
-  font-size: var(--text-lg);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
+.specs { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 14px; }
+.specs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: var(--text-ui);
+  font-weight: 500;
+}
+.specs svg {
+  flex: none;
+  width: 20px; height: 20px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.crew {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.crew__name { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; }
+.crew__line {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: var(--text-ui);
+  font-weight: 500;
+  line-height: 1.35;
   text-wrap: pretty;
 }
-
-.stage__car img,
-.stage__portrait img,
-.stage__who,
-.stage__model,
-.stage__line {
-  transition: opacity .5s var(--ease), transform .6s var(--ease);
-}
-.stage__car img { transition-delay: 0ms; }
-.stage__portrait img { transition-delay: calc(var(--step) * 1); }
-.stage__who { transition-delay: calc(var(--step) * 2); }
-.stage__model { transition-delay: calc(var(--step) * 3); }
-.stage__line { transition-delay: calc(var(--step) * 4); }
-
-.stage.is-waiting .stage__car img,
-.stage.is-swapping .stage__car img { opacity: 0; transform: scale(1.04); }
-.stage.is-waiting .stage__portrait img,
-.stage.is-swapping .stage__portrait img { opacity: 0; transform: translateY(14px) scale(1.04); }
-.stage.is-waiting .stage__who,
-.stage.is-waiting .stage__model,
-.stage.is-waiting .stage__line,
-.stage.is-swapping .stage__who,
-.stage.is-swapping .stage__model,
-.stage.is-swapping .stage__line { opacity: 0; transform: translateY(8px); }
-
-.stage.is-swapping .stage__car img,
-.stage.is-swapping .stage__portrait img,
-.stage.is-swapping .stage__who,
-.stage.is-swapping .stage__model,
-.stage.is-swapping .stage__line { transition-duration: .16s; transition-delay: 0ms; }
+.crew__item { transition: opacity .6s var(--ease), transform .7s var(--ease); }
+.crew__item + .crew__item { transition-delay: 120ms; }
+.crew__item:not(.is-in) { opacity: 0; transform: translateY(10px); }
 
 @media (min-width: 900px) {
   .stage {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto auto 1fr;
     column-gap: 24px;
   }
-  .stage__head { display: contents; }
-  .stage__title { grid-column: 1 / -1; grid-row: 1; margin-bottom: 44px; }
-  .stage__names { grid-column: 1 / 4; grid-row: 2; flex-direction: column; gap: 12px; margin: 0; }
-  .chip { flex: none; }
+  .stage__head { grid-column: 1 / -1; }
   .stage__car {
-    grid-column: 4 / -1;
+    grid-column: 1 / 9;
     grid-row: 2 / 4;
     aspect-ratio: 16 / 10;
     margin: 0;
     border-radius: var(--radius-lg);
   }
-  .stage__portrait {
-    grid-column: 1 / 4;
-    grid-row: 3 / 5;
-    align-self: start;
-    width: auto;
-    aspect-ratio: 4 / 5;
-    margin: 36px -56px 0 0;
-    border-radius: var(--radius);
-    box-shadow: 0 0 0 10px var(--bg), 0 30px 50px -30px rgba(0, 0, 0, 0.6);
-  }
-  .stage__info { grid-column: 5 / -1; grid-row: 4; margin: 0; padding-top: 36px; }
-  .stage__model { font-size: var(--text-lg); }
-  .stage__line {
-    max-width: 22ch;
-    margin-top: 20px;
-    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-    letter-spacing: -0.035em;
-    line-height: 1.1;
+  .stage__info { grid-column: 9 / -1; grid-row: 2; margin: 0; padding: 8px 0 0 16px; }
+  .specs { flex-direction: column; gap: 12px; margin-top: 22px; }
+  .crew {
+    grid-column: 9 / -1;
+    grid-row: 3;
+    align-self: end;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    margin: 0 0 8px 16px;
+    padding-top: 24px;
   }
 }
 
@@ -1110,7 +1059,6 @@ body.is-switching .header__actions .btn { opacity: 0; }
   .head__lead { font-size: var(--text-body); }
 
   .js-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .hero__zoom { animation: none; }
 
   .trips .head__kicker { margin-bottom: 4px; font-size: var(--text-base); }
   [data-stop] { position: relative; }
@@ -1140,60 +1088,12 @@ body.is-switching .header__actions .btn { opacity: 0; }
   .hero__photo {
     order: 4;
     align-self: stretch;
-    height: min(100vw, 54svh);
+    height: min(66vw, 46svh);
     aspect-ratio: auto;
-    margin: 24px 10px 0;
-    border-radius: var(--radius);
   }
-  .hero__zoom img { object-position: 57% 38%; }
   .hero__next { display: none; }
 
-  .stage__head { margin-bottom: 24px; }
-  .stage__names,
-  .stage__car,
-  .stage__portrait,
-  .stage__info { display: none; }
-
-  .crew { display: grid; gap: 44px; }
-  .crew__item { display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 12fr); column-gap: 16px; }
-  .crew__portrait {
-    position: relative;
-    z-index: 2;
-    aspect-ratio: 4 / 5;
-    margin-left: calc(var(--rail-x) - var(--pad-l) - 6px);
-    border-radius: 20px;
-    box-shadow: 0 0 0 5px var(--bg);
-  }
-  .crew__info { align-self: end; padding-bottom: 48px; }
-  .crew__name { font-size: clamp(1.625rem, 7vw, 2rem); font-weight: 600; letter-spacing: -0.045em; line-height: 1; }
-  .crew__model { margin-top: 6px; color: var(--ink-2); font-size: var(--text-ui); font-weight: 500; }
-  .crew__line {
-    margin-top: 12px;
-    font-size: var(--text-body);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    text-wrap: pretty;
-  }
-  .crew__car {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 10;
-    margin: -34px calc(-1 * var(--pad-r)) 0 0;
-    border-radius: var(--radius) 0 0 var(--radius);
-    clip-path: inset(0 0 0 0 round var(--radius) 0 0 var(--radius));
-  }
-
-  .crew__portrait,
-  .crew__info,
-  .crew__car {
-    transition: opacity .6s var(--ease), transform .8s var(--ease), clip-path 1s var(--ease);
-  }
-  .crew__portrait { transition-delay: var(--wait, 0ms); }
-  .crew__info { transition-delay: calc(var(--wait, 0ms) + 120ms); }
-  .crew__car { transition-delay: calc(var(--wait, 0ms) + 200ms); }
-  .crew__item:not(.is-in) .crew__portrait { opacity: 0; transform: translateY(14px); }
-  .crew__item:not(.is-in) .crew__info { opacity: 0; transform: translateY(10px); }
-  .crew__item:not(.is-in) .crew__car { clip-path: inset(0 0 0 35% round var(--radius) 0 0 var(--radius)); opacity: 0; }
+  .stage__car { margin-right: calc(-1 * var(--pad-r)); }
 
   .slip { display: none; }
   .pricing .head { margin-bottom: 28px; }

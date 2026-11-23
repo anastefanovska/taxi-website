@@ -10,7 +10,12 @@
 |---|---|
 | hero.webp, hero-800.webp, hero.jpg | https://images.unsplash.com/photo-1773063449875-332dff62b6e3 |
 | international.webp, international-800.webp | https://images.unsplash.com/photo-1612380635197-a025736ddba1 |
+| cars/passat.webp, cars/passat-800.webp, hero-passat.webp, hero-passat-800.webp | https://unsplash.com/photos/HHp_lac3o8g |
 | drivers/marjan.webp | https://images.unsplash.com/photo-1613559446734-0a005faa40ff |
 | drivers/igor.webp | https://images.unsplash.com/photo-1708525312039-1786825c7afe |
 | cars/car-marjan.webp | https://images.unsplash.com/photo-1673822317394-6fd502a324e6 |
 | cars/car-igor.webp | https://images.unsplash.com/photo-1629280432491-ee82fe3c23fc |
+
+## story.html (нова верзија)
+
+Фотографиите на `story.html` се вчитуваат директно од Unsplash (бесплатна Unsplash лиценца), не се зачувани во оваа папка. Листата е во `js/story-text.js` (`STORY.places`, `STORY.tours`, `STORY.wall`) и во атрибутите `data-u` во `story.html`. Пред објавување заменете ги со вистински фотографии каде што е можно.

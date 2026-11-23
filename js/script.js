@@ -3,7 +3,6 @@
   var PRICES = window.PRICES;
   var TEXT = window.TEXT;
   var SWITCH_DELAY = 180;
-  var SWAP_DELAY = 160;
   var DIGIT_STAGGER = 30;
   var DRIVE_BASE = 1100;
   var DRIVE_SPAN = 1900;
@@ -23,8 +22,6 @@
   var lang = readSavedLanguage();
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fareIndex = 0;
-  var driverIndex = 0;
-  var driverToken = 0;
   var tripKey = FIRST_TRIP;
   var tripStarted = false;
   var tripFrame = null;
@@ -56,12 +53,6 @@
   var fareList = document.getElementById('fareList');
 
   var stage = document.getElementById('stage');
-  var driverNames = document.getElementById('driverNames');
-  var driverImg = document.getElementById('driverImg');
-  var carImg = document.getElementById('carImg');
-  var carModel = document.getElementById('carModel');
-  var driverName = document.getElementById('driverName');
-  var driverLine = document.getElementById('driverLine');
   var crew = document.getElementById('crew');
   var dial = document.getElementById('dial');
   var dialList = document.getElementById('dialList');
@@ -256,64 +247,6 @@
     }).join('');
   }
 
-  function renderDriverNames() {
-    driverNames.innerHTML = SITE.drivers.map(function (driver, i) {
-      return (
-        '<button class="chip" type="button" data-driver="' + i + '" aria-pressed="' + (i === driverIndex) + '">' +
-          '<img class="chip__photo" src="' + esc(driver.photo) + '" alt="" style="object-position:' + esc(driver.focus || 'center') + '" />' +
-          '<span class="chip__name">' + esc(pick(driver.name)) + '</span>' +
-        '</button>'
-      );
-    }).join('');
-  }
-
-  function fillDriver() {
-    var driver = SITE.drivers[driverIndex];
-    var car = driver.car;
-    driverImg.src = driver.photo;
-    driverImg.alt = pick(driver.name);
-    driverImg.style.objectPosition = driver.focus || '';
-    carImg.src = car.photo;
-    carImg.alt = pick(car.model) + ' — ' + pick(driver.name);
-    carImg.style.objectPosition = car.focus || '';
-    carModel.textContent = pick(car.model);
-    driverName.textContent = pick(driver.name);
-    driverLine.textContent = pick(driver.line);
-  }
-
-  function preload(src) {
-    return new Promise(function (resolve) {
-      var img = new Image();
-      img.onload = img.onerror = resolve;
-      img.src = src;
-    });
-  }
-
-  function wait(ms) {
-    return new Promise(function (resolve) { setTimeout(resolve, ms); });
-  }
-
-  function setDriver(index) {
-    if (index === driverIndex) return;
-    driverIndex = index;
-    driverNames.querySelectorAll('.chip').forEach(function (button) {
-      button.setAttribute('aria-pressed', Number(button.dataset.driver) === index ? 'true' : 'false');
-    });
-    if (reducedMotion) {
-      fillDriver();
-      return;
-    }
-    var token = ++driverToken;
-    var driver = SITE.drivers[index];
-    stage.classList.remove('is-first');
-    stage.classList.add('is-swapping');
-    Promise.all([preload(driver.photo), preload(driver.car.photo), wait(SWAP_DELAY)]).then(function () {
-      if (token !== driverToken) return;
-      fillDriver();
-      requestAnimationFrame(function () { stage.classList.remove('is-swapping'); });
-    });
-  }
-
   var PHONE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>';
 
   function fill(template, name) {
@@ -363,17 +296,11 @@
 
   function renderCrew() {
     crew.innerHTML = SITE.drivers.map(function (driver, i) {
-      var car = driver.car;
       return (
-        '<article class="crew__item" data-seen="driver-' + i + '">' +
-          '<figure class="crew__portrait photo"><img src="' + esc(driver.photo) + '" alt="' + esc(pick(driver.name)) + '" width="1200" height="800" loading="lazy" style="object-position:' + esc(driver.focus || 'center') + '" /></figure>' +
-          '<div class="crew__info">' +
-            '<p class="crew__name">' + esc(pick(driver.name)) + '</p>' +
-            '<p class="crew__model">' + esc(pick(car.model)) + '</p>' +
-            '<p class="crew__line">' + esc(pick(driver.line)) + '</p>' +
-          '</div>' +
-          '<figure class="crew__car photo"><img src="' + esc(car.photo) + '" alt="' + esc(pick(car.model) + ' — ' + pick(driver.name)) + '" width="1800" height="1200" loading="lazy" style="object-position:' + esc(car.focus || 'center') + '" /></figure>' +
-        '</article>'
+        '<li class="crew__item" data-seen="driver-' + i + '">' +
+          '<p class="crew__name">' + esc(pick(driver.name)) + '</p>' +
+          '<p class="crew__line">' + esc(pick(driver.line)) + '</p>' +
+        '</li>'
       );
     }).join('');
     watchSeen(crew);
@@ -813,8 +740,7 @@
     renderFares();
     showFare(fareIndex, false);
     renderTours();
-    renderDriverNames();
-    fillDriver();
+    document.querySelectorAll('[data-car-model]').forEach(function (el) { el.textContent = SITE.car.model; });
     renderCrew();
     renderAbroad();
     refreshTrip();
@@ -903,11 +829,6 @@
   fareList.addEventListener('click', function (e) {
     var button = e.target.closest('.fare');
     if (button && Number(button.dataset.fare) !== fareIndex) showFare(Number(button.dataset.fare), true);
-  });
-
-  driverNames.addEventListener('click', function (e) {
-    var button = e.target.closest('.chip');
-    if (button) setDriver(Number(button.dataset.driver));
   });
 
   abroadList.addEventListener('click', function (e) {
@@ -1031,7 +952,4 @@
   render();
   initReveals();
   onScroll();
-  SITE.drivers.forEach(function (driver) {
-    setTimeout(function () { preload(driver.photo); preload(driver.car.photo); }, 1500);
-  });
 })();
