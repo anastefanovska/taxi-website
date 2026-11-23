@@ -21,18 +21,9 @@ window.TEXT = {
     'dial.call':        'Јави се на {name}',
     'dial.close':       'Откажи',
     'km':               'км',
-
-    'hero.here':        'Скопје · 24/7',
-    'hero.title':       'Само кажи<br><span class="marker">КАДЕ.</span>',
     'hero.lead':        'Такси низ Скопје, до аеродром и преку граница.',
-    'hero.next':        'Колата е важна. Луѓето уште повеќе.',
 
     'drivers.title':    'Кој е зад воланот?',
-    'drivers.lead':     'Двајца возачи. Две коли.',
-    'car.alt':          'Црн Volkswagen Passat',
-    'car.seats':        'До 3 патници',
-    'car.luggage':      'Багажот е во цената',
-    'car.child':        'Детско седиште',
 
     'prices.title':     'Вие летате. Ние возиме.',
     'prices.lead':      'За каде и да тргнете, еве ја цената.',
@@ -88,18 +79,9 @@ window.TEXT = {
     'dial.call':        'Call {name}',
     'dial.close':       'Cancel',
     'km':               'km',
-
-    'hero.here':        'Skopje · 24/7',
-    'hero.title':       'Just say<br><span class="marker">WHERE.</span>',
     'hero.lead':        'Taxi around Skopje, to the airport and across the border.',
-    'hero.next':        'The car matters. The people matter more.',
 
     'drivers.title':    'Who’s driving?',
-    'drivers.lead':     'Two drivers. Two cars.',
-    'car.alt':          'A black Volkswagen Passat',
-    'car.seats':        'Up to 3 passengers',
-    'car.luggage':      'Luggage included',
-    'car.child':        'Child seat',
 
     'prices.title':     'You fly. We drive.',
     'prices.lead':      'Wherever you’re going, here’s the price.',

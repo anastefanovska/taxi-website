@@ -12,13 +12,11 @@ window.SITE = {
   drivers: [
     {
       name:  ['Марјан', 'Marjan'],
-      phone: { number: '+38970270251', display: '+389 70 270 251' },
-      line:  ['Смирено возење. Добар разговор.', 'Calm driving. Good conversation.']
+      phone: { number: '+38970270251', display: '+389 70 270 251' }
     },
     {
       name:  ['Игор', 'Igor'],
-      phone: { number: '+38971356806', display: '+389 71 356 806' },
-      line:  ['Го знае Скопје улица по улица.', 'Knows Skopje street by street.']
+      phone: { number: '+38971356806', display: '+389 71 356 806' }
     }
   ]
 };

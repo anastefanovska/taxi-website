@@ -1,6 +1,7 @@
-const VERSION = 'pt-v1';
+const VERSION = 'pt-v2';
 const CORE = [
-  'story.html',
+  './',
+  'index.html',
   'css/story.css',
   'js/prices.js',
   'js/config.js',

@@ -5,221 +5,423 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prestige Transport — Само кажи каде.</title>
   <meta name="description" content="Такси низ Скопје, трансфери до Меѓународен Аеродром Скопје и меѓународни патувања. Јасни цени, двајца возачи." />
-  <meta name="theme-color" content="#F5F5F7" />
+  <meta name="theme-color" content="#F3F4F6" />
   <meta property="og:title" content="Prestige Transport" />
   <meta property="og:site_name" content="Prestige Transport" />
   <meta property="og:description" content="Само кажи каде." />
-  <meta property="og:image" content="assets/images/hero.jpg" />
+  <meta property="og:image" content="assets/images/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/story.css" />
 </head>
 <body>
 
   <a class="skip" href="#main" data-i18n="skip">Прескокни до содржината</a>
 
-  <header class="header" id="header">
-    <div class="container header__inner">
+  <header class="bar" id="bar">
+    <div class="bar__inner">
       <a class="brand" href="#pocetna" data-i18n-aria="brand.home" aria-label="Prestige Transport — почетна">
+        <span class="brand__mark" aria-hidden="true">P</span>
         <span class="brand__name" aria-hidden="true" data-brand>Prestige<span>Transport</span></span>
       </a>
 
       <nav class="nav" id="nav">
-        <a href="#pocetna" data-i18n="nav.home">Почетна</a>
-        <a href="#vozaci" data-i18n="nav.drivers">Возачи</a>
-        <a href="#ceni" data-i18n="nav.prices">Цени</a>
-        <a href="#patuvanja" data-i18n="nav.trips">Меѓународни патувања</a>
-        <a href="#kontakt" data-i18n="nav.contact">Контакт</a>
-        <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Јазик" data-active="mk">
-          <button type="button" data-lang="mk">MK</button>
-          <button type="button" data-lang="en">EN</button>
+        <div class="nav__links">
+          <a href="#pocetna" style="--n:0"><span class="nav__no" aria-hidden="true">01</span><span data-i18n="nav.home">Почетна</span></a>
+          <a href="#vozaci" style="--n:1"><span class="nav__no" aria-hidden="true">02</span><span data-i18n="nav.drivers">Возачи</span></a>
+          <a href="#ceni" style="--n:2"><span class="nav__no" aria-hidden="true">03</span><span data-i18n="nav.prices">Цени</span></a>
+          <a href="#patuvanja" style="--n:3"><span class="nav__no" aria-hidden="true">04</span><span data-i18n="nav.trips">Меѓународни патувања</span></a>
+          <a href="#kontakt" style="--n:4"><span class="nav__no" aria-hidden="true">05</span><span data-i18n="nav.contact">Контакт</span></a>
+        </div>
+        <div class="nav__foot">
+          <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Јазик">
+            <button type="button" data-lang="mk">MK</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+          <a class="nav__wa" data-whatsapp href="#kontakt" target="_blank" rel="noopener"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg><span data-i18n="btn.message">Пишете ни</span></a>
         </div>
       </nav>
 
-      <div class="header__actions">
-        <button class="btn btn--go btn--sm header__btn" type="button" data-call>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-          <span class="header__btn-text" data-i18n="btn.call">Јави се</span>
-        </button>
-        <a class="btn btn--light btn--sm header__btn" data-whatsapp href="#kontakt" target="_blank" rel="noopener">
-          <svg class="wa-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg>
-          <span class="header__btn-text">WhatsApp</span>
-        </a>
-        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">
-          <span class="menu-btn__lines" aria-hidden="true"></span>
+      <div class="bar__actions">
+        <a class="bar__wa" data-whatsapp href="#kontakt" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg></a>
+        <button class="btn btn--go bar__call" type="button" data-call data-magnet><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span data-i18n="btn.call">Јави се</span></button>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">
+          <span class="burger__lines" aria-hidden="true"><i></i><i></i></span>
           <span class="sr-only" data-i18n="menu">Мени</span>
         </button>
       </div>
     </div>
   </header>
 
+  <ol class="stops" id="stops" aria-hidden="true"></ol>
+
   <main id="main">
 
-    <svg class="thread" id="thread" aria-hidden="true" hidden>
-      <path class="thread__base" id="threadBase" />
-      <path class="thread__drawn" id="threadDrawn" />
-      <circle class="thread__end" id="threadEnd" r="6" />
-      <circle class="thread__head" id="threadHead" r="5" />
-    </svg>
+    <section class="hero" id="pocetna" data-chapter="ch.start">
+      <div class="hero__pin" id="heroPin">
+        <div class="hero__ground" id="heroGround" aria-hidden="true"></div>
+        <svg class="road" id="road" aria-hidden="true">
+          <defs>
+            <pattern id="asphalt" patternUnits="userSpaceOnUse" width="160" height="160"><image id="asphaltImg" width="160" height="160"/></pattern>
+          </defs>
+          <path class="road__shoulder"/>
+          <path class="road__tar"/>
+          <path class="road__line"/>
+          <path class="road__tar road__tar--inner"/>
+          <path class="road__dash"/>
+        </svg>
 
-    <div class="rail" id="rail" aria-hidden="true" hidden><span class="rail__fill" id="railFill"></span></div>
-
-    <section class="hero" id="pocetna">
-      <div class="hero__inner">
         <div class="hero__text">
-          <p class="hero__here"><span class="hero__dot" data-thread></span><span data-i18n="hero.here">Скопје · 24/7</span></p>
-          <h1 data-reveal data-i18n="hero.title">Само кажи<br><span class="marker">КАДЕ.</span></h1>
-          <p class="lead hero__lead" data-reveal data-i18n="hero.lead">Такси низ Скопје, до аеродром и преку граница.</p>
-          <a class="hero__next" href="#vozaci" data-reveal><span data-i18n="hero.next">Колата е важна. Луѓето уште повеќе.</span><span class="hero__arrow" aria-hidden="true">↓</span></a>
+          <h1 class="hero__title" id="heroTitle" aria-label="Само кажи каде.">
+            <span class="hero__say" data-split data-i18n="hero.say" aria-hidden="true">Само кажи</span>
+            <span class="slot" id="slot" aria-hidden="true"><span class="slot__word">КАДЕ.</span></span>
+          </h1>
+          <p class="hero__lead" id="heroLead" data-i18n="hero.lead">Такси низ Скопје, до аеродром и преку граница.</p>
         </div>
 
-        <figure class="hero__photo">
-          <img src="assets/images/hero-passat.webp" srcset="assets/images/hero-passat-800.webp 800w, assets/images/hero-passat.webp 1600w" sizes="(min-width: 900px) 55vw, 100vw" alt="Црн Volkswagen Passat" data-i18n-alt="car.alt" width="1600" height="1060" fetchpriority="high" />
-        </figure>
+        <div class="tcar" id="tcar"><svg class="tc" viewBox="0 0 140 60" aria-hidden="true">
+              <defs>
+                <linearGradient id="tcBody" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#6A615A"/><stop offset=".22" stop-color="#3B3531"/><stop offset=".5" stop-color="#7A7068"/><stop offset=".78" stop-color="#3B3531"/><stop offset="1" stop-color="#6A615A"/>
+                </linearGradient>
+                <linearGradient id="tcGlass" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#0A0D13"/><stop offset=".6" stop-color="#1E2633"/><stop offset="1" stop-color="#3B475A"/>
+                </linearGradient>
+                <linearGradient id="tcRoof" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1A1E27"/><stop offset=".5" stop-color="#2C3341"/><stop offset="1" stop-color="#1A1E27"/>
+                </linearGradient>
+                <radialGradient id="tcBeam" cx="0" cy=".5" r="1">
+                  <stop offset="0" stop-color="#FFF6D8" stop-opacity=".55"/><stop offset="1" stop-color="#FFF6D8" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <path class="tc__beam" d="M134 12L200 -6L200 30Z M134 48L200 30L200 66Z" fill="url(#tcBeam)"/>
+              <rect class="tc__shadow" x="6" y="6" width="132" height="52" rx="16"/>
+              <path d="M10 13C10 6 17 3 30 3L108 3C124 3 134 10 136 21L136 39C134 50 124 57 108 57L30 57C17 57 10 54 10 47Z" fill="url(#tcBody)" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+              <path d="M30 3L108 3C118 3 126 6 131 11" fill="none" stroke="#5B6577" stroke-width="1" opacity=".7"/>
+              <path d="M30 57L108 57C118 57 126 54 131 49" fill="none" stroke="#5B6577" stroke-width="1" opacity=".7"/>
+              <path d="M92 9L104 11C110 22 110 38 104 49L92 51C96 38 96 22 92 9Z" fill="url(#tcGlass)"/>
+              <path d="M24 11L36 10C33 22 33 38 36 50L24 49C21 38 21 22 24 11Z" fill="url(#tcGlass)"/>
+              <path d="M36 10L92 9C96 22 96 38 92 51L36 50C33 38 33 22 36 10Z" fill="url(#tcRoof)"/>
+              <path d="M38 6L90 5L94 8L36 9Z M38 54L90 55L94 52L36 51Z" fill="#0E1219"/>
+              <path d="M104 14C112 20 112 40 104 46" fill="none" stroke="#3E4656" stroke-width="1"/>
+              <ellipse cx="96" cy="1.6" rx="4.5" ry="2.2" fill="#151922"/>
+              <ellipse cx="96" cy="58.4" rx="4.5" ry="2.2" fill="#151922"/>
+              <path d="M128 7Q134 9 135 14L131 13Z M128 53Q134 51 135 46L131 47Z" fill="#E9EEF6"/>
+              <path d="M11 9L15 7L15 13L11 14Z M11 51L15 53L15 47L11 46Z" fill="#D2334A"/>
+              <path d="M50 30h28" stroke="#3A4252" stroke-width="1" opacity=".6"/>
+            </svg></div>
       </div>
     </section>
 
-    <section class="section" id="vozaci">
-      <div class="container stage" id="stage">
-        <div class="head stage__head" data-reveal>
-          <h2 data-stop data-i18n="drivers.title">Кој е зад воланот?</h2>
-          <p class="head__lead" data-i18n="drivers.lead">Двајца возачи. Две коли.</p>
-        </div>
-        <figure class="stage__car photo">
-          <img src="assets/images/cars/passat.webp" srcset="assets/images/cars/passat-800.webp 800w, assets/images/cars/passat.webp 1600w" sizes="(min-width: 900px) 66vw, 100vw" alt="Volkswagen Passat" data-i18n-alt="car.alt" width="1600" height="1060" loading="lazy" />
-        </figure>
-        <div class="stage__info">
-          <p class="stage__model" data-car-model>Volkswagen Passat</p>
-          <ul class="specs">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5.5 20v-1.5a6.5 6.5 0 0 1 13 0V20"/></svg><span data-i18n="car.seats">До 3 патници</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="8" width="14" height="12" rx="2.5"/><path d="M9.5 8V5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V8M9 12v4M15 12v4"/></svg><span data-i18n="car.luggage">Багажот е во цената</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h4a3 3 0 0 1 3 3v6h3a2 2 0 0 1 2 2v3H8a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM9 21h9"/></svg><span data-i18n="car.child">Детско седиште</span></li>
-          </ul>
-        </div>
-        <ul class="crew" id="crew"></ul>
-      </div>
-    </section>
-
-    <section class="section" id="ceni">
-      <div class="container pricing">
-        <div class="head" data-reveal>
-          <h2 data-stop data-i18n="prices.title">Вие летате. Ние возиме.</h2>
-          <p class="head__lead" data-i18n="prices.lead">За каде и да тргнете, еве ја цената.</p>
+    <section class="m2" id="vozaci" data-chapter="ch.car">
+      <div class="m2__pin">
+        <div class="m2__head wrap">
+          <div class="sign" aria-hidden="true"><span>01</span></div>
+          <div>
+            <p class="kicker" data-i18n="drivers.kicker">Запознајте нѐ</p>
+            <h2 data-split data-i18n="drivers.title">Кој е зад воланот?</h2>
+          </div>
         </div>
 
-        <div class="pricing__body">
-          <div class="slip" aria-live="polite">
-            <div class="slip__route">
-              <p class="slip__stop">
-                <span class="slip__dot" data-thread></span>
-                <span class="slip__label" data-i18n="fare.from">Од</span>
-                <span class="slip__place" id="fareFrom"></span>
-              </p>
-              <p class="slip__stop">
-                <span class="slip__dot slip__dot--to"></span>
-                <span class="slip__label" data-i18n="fare.to">До</span>
-                <span class="slip__place" id="fareTo"></span>
-              </p>
+        <div class="m2__stage" id="m2Stage">
+          <p class="m2__big m2__big--m" id="bigM" aria-hidden="true" data-driver-name="0"></p>
+          <p class="m2__big m2__big--i" id="bigI" aria-hidden="true" data-driver-name="1"></p>
+
+          <div class="m2__story" id="m2Story">
+            <p class="kicker" data-i18n="car.kicker">Возилото</p>
+            <h3 class="m2__title" data-car-model>Volkswagen Passat</h3>
+            <p class="m2__text" data-i18n="car.tag"></p>
+            <ul class="m2__facts">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5.5 20v-1.5a6.5 6.5 0 0 1 13 0V20"/></svg><span data-i18n="car.f1"></span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="8" width="14" height="12" rx="2.5"/><path d="M9.5 8V5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V8M9 12v4M15 12v4"/></svg><span data-i18n="car.f2"></span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h4a3 3 0 0 1 3 3v6h3a2 2 0 0 1 2 2v3H8a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM9 21h9"/></svg><span data-i18n="car.f3"></span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.9 6l14.2 12M4.9 18L19.1 6M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></svg><span data-i18n="car.f4"></span></li>
+            </ul>
+            <div class="m2__angles" role="group" data-i18n-aria="car.gallery" aria-label="">
+              <button type="button" data-card="0" data-i18n="car.v1"></button>
+              <button type="button" data-card="1" data-i18n="car.v2"></button>
+              <button type="button" data-card="2" data-i18n="car.v3"></button>
             </div>
-            <p class="slip__price" id="farePrice"></p>
           </div>
 
+          <div class="fan" id="fan" aria-roledescription="carousel" data-i18n-aria="car.gallery" aria-label="">
+            <button class="fan__card" type="button" data-card="0">
+              <img src="assets/images/cars/real-front.webp" srcset="assets/images/cars/real-front-800.webp 800w, assets/images/cars/real-front.webp 1448w" sizes="(min-width: 900px) 50vw, 90vw" width="1448" height="1086" alt="" data-i18n-alt="car.v1" loading="lazy" />
+              <span class="fan__chip" data-i18n="car.v1"></span>
+            </button>
+            <button class="fan__card" type="button" data-card="1">
+              <img src="assets/images/cars/real-rear.webp" srcset="assets/images/cars/real-rear-800.webp 800w, assets/images/cars/real-rear.webp 1448w" sizes="(min-width: 900px) 50vw, 90vw" width="1448" height="1086" alt="" data-i18n-alt="car.v2" loading="lazy" />
+              <span class="fan__chip" data-i18n="car.v2"></span>
+            </button>
+            <button class="fan__card" type="button" data-card="2">
+              <img src="assets/images/cars/real-seats.webp" srcset="assets/images/cars/real-seats-800.webp 800w, assets/images/cars/real-seats.webp 1600w" sizes="(min-width: 900px) 50vw, 90vw" width="1600" height="1200" alt="" data-i18n-alt="car.v3" loading="lazy" />
+              <span class="fan__chip" data-i18n="car.v3"></span>
+            </button>
+          </div>
+
+          <div class="walker dude dude--m" id="dudeM"><svg class="dude__svg" viewBox="0 0 240 460" aria-hidden="true">
+              <ellipse class="dude__shadow" cx="120" cy="448" rx="78" ry="8"/>
+              <g class="dude__body">
+                <g class="dude__leg dude__leg--l"><path d="M80 292L78 432Q78 438 84 438H104Q108 438 108 432L120 302V292Z" fill="#151B28"/><path d="M72 430H108Q116 430 116 443H67Q66 432 72 430Z" fill="#0C0E12"/><path d="M76 433H100" stroke="rgba(255,255,255,.2)" stroke-width="2" stroke-linecap="round"/></g><g class="dude__leg dude__leg--r"><path d="M160 292L162 432Q162 438 156 438H136Q132 438 132 432L120 302V292Z" fill="#151B28"/><path d="M132 430H168Q174 432 173 443H124Q124 430 132 430Z" fill="#0C0E12"/><path d="M138 433H162" stroke="rgba(255,255,255,.2)" stroke-width="2" stroke-linecap="round"/></g><path d="M78 290H162L160 312Q120 318 80 312Z" fill="#151B28"/>
+                
+                
+                
+                
+                <g class="dude__arm dude__arm--l">
+                  <path d="M74 140Q58 146 56 170L50 262Q50 272 61 272Q72 272 72 262L82 176Z" fill="#1D2945"/>
+                  <path d="M50 258H72V266H50Z" fill="#FFFFFF"/>
+                  
+                  <path d="M52 266Q49 290 61 293Q74 291 72 266Z" fill="#E3B592"/>
+                  <path d="M70 270Q79 274 74 284" stroke="#E3B592" stroke-width="6" stroke-linecap="round" fill="none"/>
+                  <g class="dude__keys"><circle cx="61" cy="296" r="5" fill="none" stroke="#B8BEC8" stroke-width="2"/><rect x="55" y="300" width="12" height="18" rx="5" fill="#1B1F27"/><circle cx="61" cy="306" r="2" fill="#5B6577"/><path d="M61 318V328L64 326M61 323L64 323" stroke="#B8BEC8" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+                </g>
+                <path d="M70 150Q72 131 100 125H140Q168 131 170 150L176 298Q120 308 64 298Z" fill="#1D2945"/>
+                <path d="M120 125H140Q168 131 170 150L176 298Q150 304 120 305Z" fill="rgba(0,0,0,.14)"/>
+                <path d="M103 126L120 180L137 126Z" fill="#FFFFFF"/>
+                <path d="M103 126L113 143L120 131Z M137 126L127 143L120 131Z" fill="#FFFFFF" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+                <path d="M115 129H125L123 137H117Z" fill="#13284A"/><path d="M117 136H123L127 178L120 190L113 178Z" fill="#13284A"/><path d="M118 146L124 152M117 160L125 166" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+                <path d="M103 126L95 151L105 157L99 169L120 205L120 180Z" fill="#243253"/>
+                <path d="M137 126L145 151L135 157L141 169L120 205L120 180Z" fill="#243253"/>
+                <path d="M141 172H162" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
+                <path d="M142 168L148 160L152 167L156 161L158 168Z" fill="#FFFFFF"/>
+                <circle cx="120" cy="222" r="3.2" fill="rgba(0,0,0,.35)"/>
+                <circle cx="120" cy="248" r="3.2" fill="rgba(0,0,0,.35)"/>
+                <path d="M84 272H104M136 272H156" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
+                <path d="M110 98V128Q120 135 130 128V98Z" fill="#E3B592"/>
+                <path d="M110 110Q120 122 130 110V104H110Z" fill="rgba(0,0,0,.12)"/>
+                <g class="dude__head">
+                  <ellipse cx="90" cy="82" rx="6" ry="9" fill="#E3B592"/>
+                  <ellipse cx="150" cy="82" rx="6" ry="9" fill="#E3B592"/>
+                  <ellipse cx="90" cy="82" rx="2.6" ry="5" fill="rgba(0,0,0,.12)"/>
+                  <ellipse cx="150" cy="82" rx="2.6" ry="5" fill="rgba(0,0,0,.12)"/>
+                  <ellipse cx="120" cy="78" rx="30" ry="34" fill="#E3B592"/>
+                  <path d="M92 88Q96 112 120 114Q144 112 148 88Q144 106 120 108Q96 106 92 88Z" fill="rgba(0,0,0,.07)"/>
+                  <path d="M88 78Q84 38 120 36Q154 37 153 72L151 82Q147 60 132 55Q110 50 97 60Q91 67 90 82Z" fill="#2A201A"/>
+                  <path d="M104 46Q120 41 138 48" stroke="rgba(255,255,255,.2)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                  
+                </g>
+                <g class="dude__arm dude__arm--r">
+                  <path d="M166 140Q182 146 184 170L190 262Q190 272 179 272Q168 272 168 262L158 176Z" fill="#1D2945"/>
+                  <path d="M168 258H190V266H168Z" fill="#FFFFFF"/>
+                  <path d="M168 266Q166 291 179 293Q191 290 188 266Z" fill="#E3B592"/>
+                  <path d="M170 270Q161 274 166 284" stroke="#E3B592" stroke-width="6" stroke-linecap="round" fill="none"/>
+                </g>
+              </g>
+            </svg></div>
+          <div class="walker dude dude--i" id="dudeI"><svg class="dude__svg" viewBox="0 0 240 460" aria-hidden="true">
+              <ellipse class="dude__shadow" cx="120" cy="448" rx="78" ry="8"/>
+              <g class="dude__body">
+                <g class="dude__leg dude__leg--l"><path d="M80 292L78 432Q78 438 84 438H104Q108 438 108 432L120 302V292Z" fill="#23272E"/><path d="M72 430H108Q116 430 116 443H67Q66 432 72 430Z" fill="#0C0E12"/><path d="M76 433H100" stroke="rgba(255,255,255,.2)" stroke-width="2" stroke-linecap="round"/></g><g class="dude__leg dude__leg--r"><path d="M160 292L162 432Q162 438 156 438H136Q132 438 132 432L120 302V292Z" fill="#23272E"/><path d="M132 430H168Q174 432 173 443H124Q124 430 132 430Z" fill="#0C0E12"/><path d="M138 433H162" stroke="rgba(255,255,255,.2)" stroke-width="2" stroke-linecap="round"/></g><path d="M78 290H162L160 312Q120 318 80 312Z" fill="#23272E"/>
+                
+                
+                
+                
+                <g class="dude__arm dude__arm--l">
+                  <path d="M74 140Q58 146 56 170L50 262Q50 272 61 272Q72 272 72 262L82 176Z" fill="#3A3E46"/>
+                  <path d="M50 258H72V266H50Z" fill="#CFE0F5"/>
+                  <rect x="51" y="248" width="20" height="9" rx="2" fill="#1A1C20"/><circle cx="61" cy="252.5" r="3.4" fill="#C9CED6"/>
+                  <path d="M52 266Q49 290 61 293Q74 291 72 266Z" fill="#D6A07B"/>
+                  <path d="M70 270Q79 274 74 284" stroke="#D6A07B" stroke-width="6" stroke-linecap="round" fill="none"/>
+                  
+                </g>
+                <path d="M70 150Q72 131 100 125H140Q168 131 170 150L176 298Q120 308 64 298Z" fill="#3A3E46"/>
+                <path d="M120 125H140Q168 131 170 150L176 298Q150 304 120 305Z" fill="rgba(0,0,0,.14)"/>
+                <path d="M103 126L120 180L137 126Z" fill="#CFE0F5"/>
+                <path d="M103 126L113 143L120 131Z M137 126L127 143L120 131Z" fill="#CFE0F5" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+                
+                <path d="M103 126L95 151L105 157L99 169L120 205L120 180Z" fill="#454A53"/>
+                <path d="M137 126L145 151L135 157L141 169L120 205L120 180Z" fill="#454A53"/>
+                <path d="M141 172H162" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
+                
+                <circle cx="120" cy="222" r="3.2" fill="rgba(0,0,0,.35)"/>
+                <circle cx="120" cy="248" r="3.2" fill="rgba(0,0,0,.35)"/>
+                <path d="M84 272H104M136 272H156" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
+                <path d="M110 98V128Q120 135 130 128V98Z" fill="#D6A07B"/>
+                <path d="M110 110Q120 122 130 110V104H110Z" fill="rgba(0,0,0,.12)"/>
+                <g class="dude__head">
+                  <ellipse cx="90" cy="82" rx="6" ry="9" fill="#D6A07B"/>
+                  <ellipse cx="150" cy="82" rx="6" ry="9" fill="#D6A07B"/>
+                  <ellipse cx="90" cy="82" rx="2.6" ry="5" fill="rgba(0,0,0,.12)"/>
+                  <ellipse cx="150" cy="82" rx="2.6" ry="5" fill="rgba(0,0,0,.12)"/>
+                  <ellipse cx="120" cy="78" rx="30" ry="34" fill="#D6A07B"/>
+                  <path d="M92 88Q96 112 120 114Q144 112 148 88Q144 106 120 108Q96 106 92 88Z" fill="rgba(0,0,0,.07)"/>
+                  <path d="M89 76Q87 42 120 40Q151 41 151 72Q146 55 120 53Q95 53 89 76Z" fill="#5A524D"/>
+                  <path d="M104 46Q120 41 138 48" stroke="rgba(255,255,255,.2)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                  <g class="dude__shades"><path d="M97 50H116Q119 50 119 54V57Q119 63 110 63H105Q96 63 96 57V54Q96 50 97 50Z M124 50H143Q144 50 144 54V57Q144 63 135 63H130Q121 63 121 57V54Q121 50 124 50Z" fill="#14161A"/><path d="M116 53H124" stroke="#14161A" stroke-width="2"/><path d="M100 53L106 53M127 53L133 53" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/></g><path d="M92 92Q96 113 120 116Q144 113 148 92Q143 108 120 110Q97 108 92 92Z" fill="rgba(70,45,30,.16)"/>
+                </g>
+                <g class="dude__arm dude__arm--r">
+                  <path d="M166 140Q182 146 184 170L190 262Q190 272 179 272Q168 272 168 262L158 176Z" fill="#3A3E46"/>
+                  <path d="M168 258H190V266H168Z" fill="#CFE0F5"/>
+                  <path d="M168 266Q166 291 179 293Q191 290 188 266Z" fill="#D6A07B"/>
+                  <path d="M170 270Q161 274 166 284" stroke="#D6A07B" stroke-width="6" stroke-linecap="round" fill="none"/>
+                </g>
+              </g>
+            </svg></div>
+          <p class="hello" id="helloM"><span data-i18n="hello.m"></span></p>
+          <p class="hello hello--i" id="helloI"><span data-i18n="hello.i"></span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter air" id="ceni" data-chapter="ch.air">
+      <div class="air__sky" aria-hidden="true">
+        <div class="air__photo" data-u="1665147136748-6317acbc0bd8" data-parallax="0.18"></div>
+        <svg class="air__path" viewBox="0 0 1200 400" preserveAspectRatio="none"><path id="flightPath" d="M-40 320 C 260 300, 420 60, 720 90 S 1120 260, 1260 120"/></svg>
+        <svg class="air__plane" id="plane" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+      </div>
+
+      <div class="wrap">
+        <div class="chapter__head chapter__head--center">
+          <div class="sign" aria-hidden="true"><span>02</span></div>
+          <h2 data-split data-i18n="prices.title">Вие летате. Ние возиме.</h2>
+          <p class="lead" data-rise data-i18n="prices.lead">За каде и да тргнете, еве ја цената.</p>
+        </div>
+
+        <div class="board" data-rise>
+          <div class="board__slip" aria-live="polite">
+            <p class="board__label" data-i18n="board.now">Избрана релација</p>
+            <div class="board__route">
+              <p><span class="board__k" data-i18n="fare.from">Од</span><span class="flaps" id="fareFrom"></span></p>
+              <p><span class="board__k" data-i18n="fare.to">До</span><span class="flaps" id="fareTo"></span></p>
+            </div>
+            <p class="board__price" id="farePrice"></p>
+            <div class="board__lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
           <ul class="fares" id="fareList"></ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="turi">
-      <div class="container local">
-        <div class="head" data-reveal>
-          <h2 data-stop data-i18n="tours.title">Или само низ Скопје.</h2>
+    <section class="chapter local" id="turi" data-chapter="ch.local">
+      <div class="wrap">
+        <div class="chapter__head">
+          <div class="sign" aria-hidden="true"><span>03</span></div>
+          <h2 data-split data-i18n="tours.title">Или само низ Скопје.</h2>
         </div>
-        <ul class="tours" id="tours" data-reveal></ul>
+        <ul class="tours" id="tours"></ul>
       </div>
     </section>
 
-    <section class="section" id="patuvanja">
-      <div class="container trips">
-        <div class="head" data-reveal>
-          <p class="head__kicker" data-i18n="trips.kicker">А кога патот станува подолг?</p>
-          <h2 data-stop data-i18n="trips.title">Меѓународни патувања</h2>
-        </div>
-
-        <figure class="trips__photo photo">
-          <img src="assets/images/international.webp" srcset="assets/images/international-800.webp 800w, assets/images/international.webp 2000w" sizes="(min-width: 1180px) 1120px, 100vw" data-parallax alt="Автомобил на планински пат" data-i18n-alt="trips.alt" width="2000" height="1333" loading="lazy" />
-        </figure>
-
-        <div class="journey" id="journey" aria-live="polite">
-          <div class="journey__top">
-            <p class="journey__to"><span class="journey__from" id="tripFrom"></span><span id="tripTo"></span></p>
-            <p class="journey__price" id="tripPrice"></p>
-          </div>
-          <div class="track" id="track" aria-hidden="true">
-            <span class="track__start" data-thread></span>
-            <span class="track__line"></span>
-            <span class="track__end"></span>
-            <svg class="track__car" id="trackCar" viewBox="0 0 24 13">
-              <g transform="matrix(-1 0 0 1 24 0)">
-              <rect class="track__car-light" x="10.5" y="0.5" width="4" height="2" rx="0.6"/>
-              <path class="track__car-body" d="M2 9.6V8.2c0-.8.6-1.5 1.4-1.6L7 6l2.7-2.7c.4-.4.9-.6 1.4-.6h4.3c.6 0 1.1.3 1.5.7L19.5 6l2.1.4c.8.2 1.4.9 1.4 1.7v1.5c0 .5-.4.9-.9.9H2.9c-.5 0-.9-.4-.9-.9z"/>
-              <path class="track__car-window" d="M10.6 4.2h2.2V6H8.9zM14 4.2h1.5c.3 0 .5.1.7.3L17.6 6H14z"/>
-              <circle class="track__wheel" cx="7" cy="10.5" r="2"/>
-              <circle class="track__wheel" cx="18" cy="10.5" r="2"/>
-              </g>
-            </svg>
-            <span class="track__km" id="tripKm"></span>
+    <section class="chapter abroad" id="patuvanja" data-chapter="ch.abroad">
+      <div class="wrap">
+        <div class="chapter__head">
+          <div class="sign" aria-hidden="true"><span>04</span></div>
+          <div>
+            <p class="kicker" data-rise data-i18n="trips.kicker">А кога патот станува подолг?</p>
+            <h2 data-split data-i18n="trips.title">Меѓународни патувања</h2>
           </div>
         </div>
 
-        <ul class="trips__list" id="abroad"></ul>
+        <div class="atlas">
+          <div class="globe" id="globe">
+            <canvas id="globeCanvas" aria-hidden="true"></canvas>
+            <div class="globe__labels" id="globeLabels"></div>
+            <p class="globe__hint" data-i18n="map.hint">Повлечете за да ја свртите мапата.</p>
+            <div class="globe__loading" id="globeLoading" aria-hidden="true"><span></span></div>
+          </div>
 
+          <div class="journey" id="journey" aria-live="polite">
+            <div class="journey__photo" id="tripPhoto" aria-hidden="true"></div>
+            <div class="journey__top">
+              <p class="journey__to"><span class="journey__from" id="tripFrom"></span><span id="tripTo"></span></p>
+              <p class="journey__price" id="tripPrice"></p>
+            </div>
+            <div class="track" id="track" aria-hidden="true">
+              <span class="track__start"></span>
+              <span class="track__line"></span>
+              <span class="track__end"></span>
+              <svg class="track__car" id="trackCar" viewBox="0 0 24 13">
+                <g transform="matrix(-1 0 0 1 24 0)">
+                  <rect class="track__light" x="10.5" y="0.5" width="4" height="2" rx="0.6"/>
+                  <path class="track__body" d="M2 9.6V8.2c0-.8.6-1.5 1.4-1.6L7 6l2.7-2.7c.4-.4.9-.6 1.4-.6h4.3c.6 0 1.1.3 1.5.7L19.5 6l2.1.4c.8.2 1.4.9 1.4 1.7v1.5c0 .5-.4.9-.9.9H2.9c-.5 0-.9-.4-.9-.9z"/>
+                  <path class="track__window" d="M10.6 4.2h2.2V6H8.9zM14 4.2h1.5c.3 0 .5.1.7.3L17.6 6H14z"/>
+                  <circle class="track__wheel" cx="7" cy="10.5" r="2"/>
+                  <circle class="track__wheel" cx="18" cy="10.5" r="2"/>
+                </g>
+              </svg>
+              <span class="track__km" id="tripKm"></span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="trips" id="abroad"></ul>
+      </div>
+      <div class="peek" id="peek" aria-hidden="true"><div class="peek__img" id="peekImg"></div></div>
+    </section>
+
+    <section class="drive" id="pat" data-chapter="ch.road">
+      <div class="drive__pin">
+        <div class="drive__photo" data-u="1596072163669-a5379d03a98b"></div>
+        <div class="drive__signs" id="signs" aria-hidden="true"></div>
+        <div class="drive__text wrap">
+          <div class="sign sign--light" aria-hidden="true"><span>05</span></div>
+          <h2 data-split data-i18n="road.title">Патот е долг. Цената е јасна.</h2>
+          <p class="lead" data-rise data-i18n="road.lead">По возило, во еден правец. Гориво, патарини и багаж се вклучени.</p>
+          <p class="drive__odo" aria-hidden="true"><span id="driveKm">0</span><small data-i18n="km">км</small></p>
+        </div>
       </div>
     </section>
 
-    <section class="section section--tight" id="prashanja">
-      <div class="container faq">
-        <h2 class="faq__title" data-stop data-reveal data-i18n="faq.title">Пред да тргнеме.</h2>
-        <div class="faq__list" data-reveal>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1">Како да закажам?</button></h3>
+    <section class="chapter faq" id="prashanja" data-chapter="ch.faq">
+      <div class="wrap faq__grid">
+        <div class="faq__side">
+          <div class="sign" aria-hidden="true"><span>06</span></div>
+          <h2 data-split data-i18n="faq.title">Пред да тргнеме.</h2>
+          <figure class="faq__photo" data-tilt>
+            <div class="faq__img"><img src="assets/images/international.webp" srcset="assets/images/international-800.webp 800w, assets/images/international.webp 2000w" sizes="(min-width: 960px) 40vw, 100vw" alt="Автомобил на планински пат" data-i18n-alt="trips.alt" width="2000" height="1333" loading="lazy" /></div>
+          </figure>
+        </div>
+        <div class="faq__list">
+          <div class="faq__item" data-rise>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1"><span data-i18n="faq.q1">Како да закажам?</span><i aria-hidden="true"></i></button></h3>
             <div class="faq__a" id="faq1" role="region"><div><p data-i18n="faq.a1">Јавете се или пишете ни на WhatsApp: од каде, до каде и кога.</p></div></div>
           </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2">Ја нема вашата релација?</button></h3>
+          <div class="faq__item" data-rise>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2"><span data-i18n="faq.q2">Ја нема вашата релација?</span><i aria-hidden="true"></i></button></h3>
             <div class="faq__a" id="faq2" role="region"><div><p data-i18n="faq.a2">Пишете ни — ќе Ви кажеме цена.</p></div></div>
           </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Слетувате во Скопје?</button></h3>
+          <div class="faq__item" data-rise>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3"><span data-i18n="faq.q3">Слетувате во Скопје?</span><i aria-hidden="true"></i></button></h3>
             <div class="faq__a" id="faq3" role="region"><div><p data-i18n="faq.a3">Пратете ни го бројот на летот. Ќе знаеме кога да Ве чекаме.</p></div></div>
           </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq4" data-i18n="faq.q4">Имате детско седиште?</button></h3>
+          <div class="faq__item" data-rise>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq4"><span data-i18n="faq.q4">Имате детско седиште?</span><i aria-hidden="true"></i></button></h3>
             <div class="faq__a" id="faq4" role="region"><div><p data-i18n="faq.a4">Да. Кажете ни при закажувањето.</p></div></div>
           </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq5" data-i18n="faq.q5">Може ли миленичиња?</button></h3>
+          <div class="faq__item" data-rise>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq5"><span data-i18n="faq.q5">Може ли миленичиња?</span><i aria-hidden="true"></i></button></h3>
             <div class="faq__a" id="faq5" role="region"><div><p data-i18n="faq.a5">Да, до 5 кг во транспортер.</p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section depart" id="kontakt">
-      <div class="container">
-        <h2 class="depart__title" data-reveal="fade" data-thread-end data-i18n="cta.title">Каде одиме?</h2>
-        <div class="depart__actions" data-reveal>
-          <button class="btn btn--go btn--lg" type="button" data-call>
+    <section class="depart" id="kontakt" data-chapter="ch.go">
+      <div class="depart__wall" aria-hidden="true">
+        <div class="depart__col" data-col="0"></div>
+        <div class="depart__col depart__col--down" data-col="1"></div>
+        <div class="depart__col" data-col="2"></div>
+        <div class="depart__col depart__col--down" data-col="3"></div>
+      </div>
+      <div class="depart__card">
+        <h2 class="depart__title" data-split data-i18n="cta.title">Каде одиме?</h2>
+        <div class="depart__actions">
+          <button class="btn btn--go btn--lg" type="button" data-call data-magnet>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
             <span data-i18n="btn.call">Јави се</span>
           </button>
-          <a class="btn btn--light btn--lg" data-whatsapp href="#kontakt" target="_blank" rel="noopener">
-            <svg class="wa-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg>
+          <a class="btn btn--light btn--lg" data-whatsapp href="#kontakt" target="_blank" rel="noopener" data-magnet>
+            <svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.1z"/></svg>
             <span>WhatsApp</span>
           </a>
         </div>
-        <a class="follow" data-instagram href="#kontakt" target="_blank" rel="noopener" data-reveal>
+        <a class="follow" data-instagram href="#kontakt" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
           <span data-i18n="social.follow">Следете нѐ на Instagram</span>
         </a>
@@ -229,8 +431,8 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__left">
+    <div class="wrap footer__inner">
+      <div>
         <p class="footer__end" data-i18n="footer.end">До следното возење.</p>
         <p class="footer__meta">© <span id="year">2026</span> <span data-site-name>Prestige Transport</span></p>
       </div>
@@ -251,6 +453,8 @@
   <script src="js/prices.js"></script>
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/story-text.js"></script>
+  <script src="js/story.js"></script>
+  <script type="module" src="js/story-map.js"></script>
 </body>
 </html>
